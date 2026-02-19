@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Display Profile Configuration for Xiaomi Onyx (POCO F7)
+     AMOLED Display Calibration and HDR Profile
+     
+     Copyright (C) 2024 The LineageOS Project
+     Licensed under the Apache License, Version 2.0
+-->
+<DisplayProfile version="2.0">
+    <!-- Panel Information -->
+    <PanelInfo>
+        <Manufacturer>Xiaomi</Manufacturer>
+        <Model>ONYX_AMOLED_144HZ</Model>
+        <Type>AMOLED</Type>
+        <Resolution>
+            <Width>1440</Width>
+            <Height>3200</Height>
+        </Resolution>
+        <RefreshRate>
+            <Min>1</Min>
+            <Max>144</Max>
+            <Variable>true</Variable>
+            <LTPO>true</LTPO>
+        </RefreshRate>
+        <PixelDensity>460</PixelDensity>
+        <ColorDepth>10</ColorDepth>
+        <SubPixelLayout>Pentile</SubPixelLayout>
+        <HDRSupport>true</HDRSupport>
+    </PanelInfo>
+
+    <!-- Color Gamut Profiles -->
+    <ColorGamutProfiles>
+        <!-- Native Gamut (Maximum coverage) -->
+        <Profile name="native" id="0">
+            <Primaries>
+                <Red x="0.690" y="0.310"/>
+                <Green x="0.275" y="0.710"/>
+                <Blue x="0.155" y="0.060"/>
+                <White x="0.3127" y="0.3290"/>
+            </Primaries>
+            <Coverage>
+                <DCI_P3>105</DCI_P3>
+                <sRGB>145</sRGB>
+                <BT2020>82</BT2020>
+            </Coverage>
+            <Description>Maximum color gamut for vivid display</Description>
+        </Profile>
+
+        <!-- DCI-P3 Gamut (Cinema standard) -->
+        <Profile name="dcip3" id="1">
+            <Primaries>
+                <Red x="0.680" y="0.320"/>
+                <Green x="0.265" y="0.690"/>
+                <Blue x="0.150" y="0.060"/>
+                <White x="0.3127" y="0.3290"/>
+            </Primaries>
+            <Coverage>
+                <DCI_P3>100</DCI_P3>
+                <sRGB>133</sRGB>
+            </Coverage>
+            <Description>DCI-P3 cinema color standard</Description>
+        </Profile>
+
+        <!-- sRGB Gamut (Standard) -->
+        <Profile name="srgb" id="2">
+            <Primaries>
+                <Red x="0.640" y="0.330"/>
+                <Green x="0.300" y="0.600"/>
+                <Blue x="0.150" y="0.060"/>
+                <White x="0.3127" y="0.3290"/>
+            </Primaries>
+            <Coverage>
+                <sRGB>100</sRGB>
+            </Coverage>
+            <Description>Standard sRGB color space</Description>
+        </Profile>
+
+        <!-- Adobe RGB Gamut -->
+        <Profile name="adobergb" id="3">
+            <Primaries>
+                <Red x="0.640" y="0.330"/>
+                <Green x="0.210" y="0.710"/>
+                <Blue x="0.150" y="0.060"/>
+                <White x="0.3127" y="0.3290"/>
+            </Primaries>
+            <Coverage>
+                <AdobeRGB>100</AdobeRGB>
+                <sRGB>127</sRGB>
+            </Coverage>
+            <Description>Adobe RGB for photography</Description>
+        </Profile>
+
+        <!-- BT.2020 Gamut (HDR standard) -->
+        <Profile name="bt2020" id="4">
+            <Primaries>
+                <Red x="0.708" y="0.292"/>
+                <Green x="0.170" y="0.797"/>
+                <Blue x="0.131" y="0.046"/>
+                <White x="0.3127" y="0.3290"/>
+            </Primaries>
+            <Coverage>
+                <BT2020>76</BT2020>
+                <DCI_P3>94</DCI_P3>
+            </Coverage>
+            <Description>BT.2020 HDR color space</Description>
+        </Profile>
+    </ColorGamutProfiles>
+
+    <!-- White Point Presets -->
+    <WhitePointPresets>
+        <Preset name="d65" id="0">
+            <Temperature>6500</Temperature>
+            <Coordinates x="0.3127" y="0.3290"/>
+            <Description>Standard D65 white point</Description>
+        </Preset>
+        <Preset name="d75" id="1">
+            <Temperature>7500</Temperature>
+            <Coordinates x="0.2990" y="0.3150"/>
+            <Description>Cool white (D75)</Description>
+        </Preset>
+        <Preset name="d55" id="2">
+            <Temperature>5500</Temperature>
+            <Coordinates x="0.3324" y="0.3474"/>
+            <Description>Warm white (D55)</Description>
+        </Preset>
+        <Preset name="d50" id="3">
+            <Temperature>5000</Temperature>
+            <Coordinates x="0.3457" y="0.3585"/>
+            <Description>Warm white (D50) for print</Description>
+        </Preset>
+    </WhitePointPresets>
+
+    <!-- Brightness Configuration -->
+    <BrightnessConfig>
+        <!-- Manual brightness curve -->
+        <ManualCurve>
+            <Minimum>2</Minimum>
+            <Maximum>2047</Maximum>
+            <Default>128</Default>
+            <Steps>255</Steps>
+            <!-- Lux to brightness mapping -->
+            <LuxLevels>
+                <Level lux="0" brightness="2"/>
+                <Level lux="1" brightness="4"/>
+                <Level lux="5" brightness="8"/>
+                <Level lux="10" brightness="16"/>
+                <Level lux="20" brightness="32"/>
+                <Level lux="50" brightness="64"/>
+                <Level lux="100" brightness="128"/>
+                <Level lux="200" brightness="256"/>
+                <Level lux="400" brightness="512"/>
+                <Level lux="800" brightness="1024"/>
+                <Level lux="1600" brightness="1536"/>
+                <Level lux="3000" brightness="2047"/>
+            </LuxLevels>
+        </ManualCurve>
+
+        <!-- Auto brightness configuration -->
+        <AutoBrightness>
+            <Enabled>true</Enabled>
+            <SensorType>ambient_light</SensorType>
+            <SamplingPeriod>100</SamplingPeriod>
+            <Hysteresis>0.1</Hysteresis>
+            <BrighteningDebounce>2000</BrighteningDebounce>
+            <DarkeningDebounce>4000</DarkeningDebounce>
+            <BrighteningRate>0.1</BrighteningRate>
+            <DarkeningRate>0.05</DarkeningRate>
+        </AutoBrightness>
+
+        <!-- HDR brightness boost -->
+        <HDRBoost>
+            <Enabled>true</Enabled>
+            <BoostFactor>2.0</BoostFactor>
+            <MaxHDRBrightness>2000</MaxHDRBrightness>
+            <ThermalLimit>true</ThermalLimit>
+            <TimeLimit>300000</TimeLimit>
+        </HDRBoost>
+    </BrightnessConfig>
+
+    <!-- Gamma Configuration -->
+    <GammaConfig>
+        <!-- Standard gamma 2.2 -->
+        <Curve name="gamma22" id="0">
+            <Value>2.2</Value>
+            <Description>Standard gamma for sRGB</Description>
+        </Curve>
+
+        <!-- Gamma 2.4 for cinema -->
+        <Curve name="gamma24" id="1">
+            <Value>2.4</Value>
+            <Description>Cinema gamma for dark rooms</Description>
+        </Curve>
+
+        <!-- Gamma 1.8 for Mac compatibility -->
+        <Curve name="gamma18" id="2">
+            <Value>1.8</Value>
+            <Description>Mac gamma for print work</Description>
+        </Curve>
+
+        <!-- Custom gamma curve -->
+        <Curve name="custom" id="3">
+            <Type>interpolated</Type>
+            <ControlPoints>
+                <Point input="0.0" output="0.0"/>
+                <Point input="0.1" output="0.035"/>
+                <Point input="0.2" output="0.087"/>
+                <Point input="0.3" output="0.152"/>
+                <Point input="0.4" output="0.228"/>
+                <Point input="0.5" output="0.313"/>
+                <Point input="0.6" output="0.406"/>
+                <Point input="0.7" output="0.506"/>
+                <Point input="0.8" output="0.613"/>
+                <Point input="0.9" output="0.726"/>
+                <Point input="1.0" output="1.0"/>
+            </ControlPoints>
+            <Description>Custom perceptual gamma</Description>
+        </Curve>
+    </GammaConfig>
+
+    <!-- Display Modes -->
+    <DisplayModes>
+        <!-- Standard Mode -->
+        <Mode name="standard" id="0">
+            <ColorGamut>dcip3</ColorGamut>
+            <WhitePoint>d65</WhitePoint>
+            <Gamma>gamma22</Gamma>
+            <ColorTemperature>6500</ColorTemperature>
+            <Saturation>1.0</Saturation>
+            <Contrast>1.0</Contrast>
+            <Sharpness>0</Sharpness>
+            <Description>Balanced color for daily use</Description>
+        </Mode>
+
+        <!-- Vivid Mode -->
+        <Mode name="vivid" id="1">
+            <ColorGamut>native</ColorGamut>
+            <WhitePoint>d65</WhitePoint>
+            <Gamma>gamma22</Gamma>
+            <ColorTemperature>7000</ColorTemperature>
+            <Saturation>1.15</Saturation>
+            <Contrast>1.1</Contrast>
+            <Sharpness>10</Sharpness>
+            <Description>Enhanced colors and contrast</Description>
+        </Mode>
+
+        <!-- Cinema Mode -->
+        <Mode name="cinema" id="2">
+            <ColorGamut>dcip3</ColorGamut>
+            <WhitePoint>d65</WhitePoint>
+            <Gamma>gamma24</Gamma>
+            <ColorTemperature>6500</ColorTemperature>
+            <Saturation>1.0</Saturation>
+            <Contrast>1.0</Contrast>
+            <Sharpness>0</Sharpness>
+            <Description>Accurate colors for movies</Description>
+        </Mode>
+
+        <!-- Photo Mode -->
+        <Mode name="photo" id="3">
+            <ColorGamut>adobergb</ColorGamut>
+            <WhitePoint>d50</WhitePoint>
+            <Gamma>gamma22</Gamma>
+            <ColorTemperature>5000</ColorTemperature>
+            <Saturation>1.0</Saturation>
+            <Contrast>1.0</Contrast>
+            <Sharpness>0</Sharpness>
+            <Description>Color accurate for photography</Description>
+        </Mode>
+
+        <!-- Reading Mode -->
+        <Mode name="reading" id="4">
+            <ColorGamut>srgb</ColorGamut>
+            <WhitePoint>d55</WhitePoint>
+            <Gamma>gamma22</Gamma>
+            <ColorTemperature>5500</ColorTemperature>
+            <Saturation>0.9</Saturation>
+            <Contrast>0.95</Contrast>
+            <Sharpness>0</Sharpness>
+            <BlueLightFilter>0.3</BlueLightFilter>
+            <Description>Comfortable for reading</Description>
+        </Mode>
+
+        <!-- Night Mode -->
+        <Mode name="night" id="5">
+            <ColorGamut>srgb</ColorGamut>
+            <WhitePoint>d50</WhitePoint>
+            <Gamma>gamma22</Gamma>
+            <ColorTemperature>4500</ColorTemperature>
+            <Saturation>0.85</Saturation>
+            <Contrast>0.9</Contrast>
+            <Sharpness>0</Sharpness>
+            <BlueLightFilter>0.5</BlueLightFilter>
+            <Description>Reduced blue light for night</Description>
+        </Mode>
+
+        <!-- HDR Mode -->
+        <Mode name="hdr" id="6">
+            <ColorGamut>bt2020</ColorGamut>
+            <WhitePoint>d65</WhitePoint>
+            <Gamma>gamma22</Gamma>
+            <ColorTemperature>6500</ColorTemperature>
+            <Saturation>1.0</Saturation>
+            <Contrast>1.0</Contrast>
+            <Sharpness>0</Sharpness>
+            <HDRSupport>true</HDRSupport>
+            <Description>HDR content optimized</Description>
+        </Mode>
+
+        <!-- Game Mode -->
+        <Mode name="game" id="7">
+            <ColorGamut>native</ColorGamut>
+            <WhitePoint>d65</WhitePoint>
+            <Gamma>gamma22</Gamma>
+            <ColorTemperature>7000</ColorTemperature>
+            <Saturation>1.1</Saturation>
+            <Contrast>1.05</Contrast>
+            <Sharpness>15</Sharpness>
+            <ResponseTime>fast</ResponseTime>
+            <Description>Optimized for gaming</Description>
+        </Mode>
+    </DisplayModes>
+
+    <!-- HDR Configuration -->
+    <HDRConfig>
+        <!-- HDR10 Configuration -->
+        <HDR10>
+            <Enabled>true</Enabled>
+            <MaxCLL>4000</MaxCLL>
+            <MaxFALL>2000</MaxFALL>
+            <ToneMapping>adaptive</ToneMapping>
+        </HDR10>
+
+        <!-- HDR10+ Configuration -->
+        <HDR10Plus>
+            <Enabled>true</Enabled>
+            <DynamicMetadata>true</DynamicMetadata>
+            <SceneOptimization>true</SceneOptimization>
+        </HDR10Plus>
+
+        <!-- Dolby Vision Configuration -->
+        <DolbyVision>
+            <Enabled>true</Enabled>
+            <Profile>cinema</Profile>
+            <DynamicMetadata>true</DynamicMetadata>
+            <ICtCp>true</ICtCp>
+        </DolbyVision>
+
+        <!-- HLG Configuration -->
+        <HLG>
+            <Enabled>true</Enabled>
+            <OOTF>true</OOTF>
+            <SystemGamma>1.3</SystemGamma>
+        </HLG>
+    </HDRConfig>
+
+    <!-- PWM and Dimming Configuration -->
+    <DimmingConfig>
+        <!-- PWM Dimming -->
+        <PWM>
+            <Frequency>360</Frequency>
+            <MinDutyCycle>1</MinDutyCycle>
+            <MaxDutyCycle>100</MaxDutyCycle>
+        </PWM>
+
+        <!-- DC Dimming (Anti-flicker) -->
+        <DCDimming>
+            <Enabled>false</Enabled>
+            <Mode>low_brightness</Mode>
+            <Threshold>20</Threshold>
+        </DCDimming>
+
+        <!-- High Brightness Mode -->
+        <HighBrightnessMode>
+            <Enabled>true</Enabled>
+            <Threshold>800</Threshold>
+            <MaxDuration>300000</MaxDuration>
+            <ThermalScaling>true</ThermalScaling>
+        </HighBrightnessMode>
+    </DimmingConfig>
+
+    <!-- Video Enhancement -->
+    <VideoEnhancement>
+        <!-- MEMC (Motion Estimation/Motion Compensation) -->
+        <MEMC>
+            <Enabled>true</Enabled>
+            <Mode>auto</Mode>
+            <DeJudder>
+                <Enabled>true</Enabled>
+                <Strength>0.5</Strength>
+            </DeJudder>
+            <DeBlur>
+                <Enabled>true</Enabled>
+                <Strength>0.5</Strength>
+            </DeBlur>
+        </MEMC>
+
+        <!-- Super Resolution -->
+        <SuperResolution>
+            <Enabled>true</Enabled>
+            <Mode>auto</Mode>
+            <UpscalingQuality>high</UpscalingQuality>
+        </SuperResolution>
+
+        <!-- AI Picture Enhancement -->
+        <AIPicture>
+            <Enabled>true</Enabled>
+            <NoiseReduction>auto</NoiseReduction>
+            <DetailEnhancement>auto</DetailEnhancement>
+            <DynamicContrast>auto</DynamicContrast>
+        </AIPicture>
+    </VideoEnhancement>
+
+    <!-- Eye Comfort Features -->
+    <EyeComfort>
+        <!-- Blue Light Filter -->
+        <BlueLightFilter>
+            <Enabled>true</Enabled>
+            <Modes>
+                <Mode name="light" strength="0.2"/>
+                <Mode name="medium" strength="0.4"/>
+                <Mode name="strong" strength="0.6"/>
+                <Mode name="very_strong" strength="0.8"/>
+            </Modes>
+            <Schedule>
+                <Enabled>true</Enabled>
+                <StartTime>22:00</StartTime>
+                <EndTime>06:00</EndTime>
+            </Schedule>
+        </BlueLightFilter>
+
+        <!-- Paper Mode -->
+        <PaperMode>
+            <Enabled>true</Enabled>
+            <Chromaticity>
+                <X>0.35</X>
+                <Y>0.36</Y>
+            </Chromaticity>
+        </PaperMode>
+
+        <!-- Sunlight Visibility Enhancement -->
+        <SunlightEnhancement>
+            <Enabled>true</Enabled>
+            <AutoBoost>true</AutoBoost>
+            <MaxBoost>2000</MaxBoost>
+        </SunlightEnhancement>
+    </EyeComfort>
+
+    <!-- Calibration Data -->
+    <CalibrationData>
+        <!-- Factory calibration -->
+        <FactoryCalibration>
+            <PanelID>ONYX_AMOLED_V1</PanelID>
+            <CalibrationDate>2024-01-01</CalibrationDate>
+            <ColorAccuracy dE2000="1.5"/>
+            <GrayscaleAccuracy dE2000="1.0"/>
+            <GammaTracking error="0.02"/>
+        </FactoryCalibration>
+
+        <!-- Uniformity compensation -->
+        <UniformityCompensation>
+            <Enabled>true</Enabled>
+            <GridSize>9x9</GridSize>
+            <!-- Per-zone brightness adjustment -->
+            <Zones>
+                <!-- Center zone reference -->
+                <Zone x="4" y="4" factor="1.0"/>
+                <!-- Corner zones typically dimmer -->
+                <Zone x="0" y="0" factor="1.05"/>
+                <Zone x="8" y="0" factor="1.05"/>
+                <Zone x="0" y="8" factor="1.05"/>
+                <Zone x="8" y="8" factor="1.05"/>
+            </Zones>
+        </UniformityCompensation>
+
+        <!-- Burn-in protection -->
+        <BurninProtection>
+            <Enabled>true</Enabled>
+            <PixelShift>
+                <Enabled>true</Enabled>
+                <Range>2</Range>
+                <Interval>60000</Interval>
+            </PixelShift>
+            <DimmingProtection>
+                <Enabled>true</Enabled>
+                <DetectionSensitivity>0.8</DetectionSensitivity>
+            </DimmingProtection>
+        </BurninProtection>
+    </CalibrationData>
+</DisplayProfile>

@@ -6,6 +6,7 @@ cc_library_static {
     vendor: true,
     srcs: [
         "power-mode.cpp",
+        "glove-mode.cpp",
     ],
     shared_libs: [
         "libbase",

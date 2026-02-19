@@ -1,6 +1,15 @@
 # Battery
 genfscon sysfs /class/qcom-battery u:object_r:vendor_sysfs_qcom_battery:s0
 
+# Dolby
+genfscon sysfs /class/dolby u:object_r:vendor_sysfs_dolby:s0
+genfscon sysfs /class/dolby/dap u:object_r:vendor_sysfs_dolby:s0
+genfscon sysfs /class/dolby/ds u:object_r:vendor_sysfs_dolby:s0
+
+# Dolby Vision
+genfscon sysfs /class/dolby_vision u:object_r:vendor_sysfs_dolby_vision:s0
+genfscon sysfs /class/hdr u:object_r:vendor_sysfs_dolby_vision:s0
+
 # Camera
 genfscon sysfs /csiphy_umd_paras/csiphy_umd_paras u:object_r:sysfs_csiphy_umd_paras:s0
 

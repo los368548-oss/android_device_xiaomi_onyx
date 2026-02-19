@@ -1,6 +1,8 @@
 set_prop(vendor_init, vendor_camera_prop)
+set_prop(vendor_init, vendor_charger_prop)
 set_prop(vendor_init, vendor_deviceid_prop)
 set_prop(vendor_init, vendor_displayfeature_prop)
+set_prop(vendor_init, vendor_dolby_vision_prop)
 set_prop(vendor_init, vendor_mischeck_prop)
 set_prop(vendor_init, vendor_qcc_prop)
 set_prop(vendor_init, vendor_radio_prop)
@@ -12,3 +14,7 @@ allow vendor_init minidump_data_file:dir create_dir_perms;
 allow vendor_init minidump_data_file:file create_file_perms;
 allow init vendor_sysfs_battery_supply:file { open read getattr setattr};
 allow init sysfs_fastcharge:file { setattr };
+
+# Allow init to configure MCA charging nodes for 90W fast charging
+allow init vendor_sysfs_xm_power:dir { search };
+allow init vendor_sysfs_xm_power:file { open read write getattr setattr };

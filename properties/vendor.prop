@@ -24,6 +24,27 @@ vendor.audio_hal.period_size=192
 vendor.qc2audio.per_frame.flac.dec.enabled=true
 vendor.qc2audio.suspend.enabled=true
 
+# Dolby Vision
+ro.vendor.dolby.vision.enabled=true
+ro.vendor.dolby.vision.support=true
+persist.vendor.dolby.vision.enabled=true
+persist.vendor.dolby.vision.support=true
+ro.vendor.display.hdr.enabled=true
+ro.vendor.display.hdr.support=true
+ro.vendor.display.dolby_vision.profile=cinema
+persist.vendor.display.hdr.mode=auto
+vendor.display.hdr.capability=dolby_vision,hdr10,hdr10plus,hlg
+vendor.display.hdr.peak_brightness=2000
+vendor.display.hdr.color_gamut=DCI-P3
+vendor.display.hdr.tone_mapping=adaptive
+vendor.display.hdr.gamut_mapping=perceptual
+vendor.display.hdr.content_adaptive=true
+vendor.display.hdr.ambient_adaptation=true
+vendor.display.hdr.skin_tone_protection=true
+vendor.display.hdr.memory_color_protection=true
+vendor.display.hdr.low_latency_mode=true
+vendor.display.hdr.vrr_support=true
+
 # AVF
 avf.remote_attestation.enabled=false
 
@@ -229,6 +250,12 @@ vendor.usb.rmnet.inst.name=rmnet
 vendor.usb.rndis.func.name=gsi
 vendor.usb.use_ffs_mtp=1
 vendor.usb.use_gadget_hal=1
+
+# Charging
+ro.vendor.fast_charge=true
+persist.vendor.fast_charge=true
+persist.vendor.chg_typ=90w
+vendor.power.chg.typ=90w
 
 # WiFi
 wifi.aware.interface=wifi-aware0

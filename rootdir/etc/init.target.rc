@@ -535,6 +535,40 @@ on property:vendor.display.lcd_density=640
     chown system system /sys/class/qcom-battery/sport_mode
     chmod 0660 /sys/class/qcom-battery/sport_mode
 
+    # MCA Charging configuration for 90W Xiaomi charger support
+    chown system system /sys/devices/platform/soc/soc:mca_strategy_quick_charge/enable
+    chown system system /sys/devices/platform/soc/soc:mca_strategy_quick_charge/auth_result
+    chown system system /sys/devices/platform/soc/soc:mca_strategy_pd_auth/enable
+    chown system system /sys/devices/platform/soc/soc:mca_strategy_pd_auth/auth_result
+    chown system system /sys/devices/platform/soc/soc:mca_charge_interface/charge_type
+    chown system system /sys/devices/platform/soc/soc:mca_charge_interface/charge_current
+    chown system system /sys/devices/platform/soc/soc:mca_business_charger/charge_enable
+    chown system system /sys/devices/virtual/xm_power/charger/charge_done
+    chown system system /sys/devices/virtual/xm_power/charger/charge_status
+    chown system system /sys/devices/virtual/xm_power/charger/charge_type
+    chown system system /sys/devices/virtual/xm_power/charger/constant_charge_current_max
+    chown system system /sys/devices/virtual/xm_power/charger/input_current_max
+    chown system system /sys/devices/virtual/xm_power/charge_pump/charge_pump_enable
+    chown system system /sys/devices/virtual/xm_power/charge_pump/charge_pump_status
+    chmod 0660 /sys/devices/platform/soc/soc:mca_strategy_quick_charge/enable
+    chmod 0660 /sys/devices/platform/soc/soc:mca_strategy_quick_charge/auth_result
+    chmod 0660 /sys/devices/platform/soc/soc:mca_strategy_pd_auth/enable
+    chmod 0660 /sys/devices/platform/soc/soc:mca_strategy_pd_auth/auth_result
+    chmod 0660 /sys/devices/platform/soc/soc:mca_charge_interface/charge_type
+    chmod 0660 /sys/devices/platform/soc/soc:mca_charge_interface/charge_current
+    chmod 0660 /sys/devices/platform/soc/soc:mca_business_charger/charge_enable
+    chmod 0660 /sys/devices/virtual/xm_power/charger/charge_done
+    chmod 0660 /sys/devices/virtual/xm_power/charger/charge_status
+    chmod 0660 /sys/devices/virtual/xm_power/charger/charge_type
+    chmod 0660 /sys/devices/virtual/xm_power/charger/constant_charge_current_max
+    chmod 0660 /sys/devices/virtual/xm_power/charger/input_current_max
+    chmod 0660 /sys/devices/virtual/xm_power/charge_pump/charge_pump_enable
+    chmod 0660 /sys/devices/virtual/xm_power/charge_pump/charge_pump_status
+
+    # Enable quick charge and PD auth strategies for 90W charging
+    write /sys/devices/platform/soc/soc:mca_strategy_quick_charge/enable 1
+    write /sys/devices/platform/soc/soc:mca_strategy_pd_auth/enable 1
+
 on init && property:ro.boot.mode=charger
     wait_for_prop vendor.all.modules.ready 1
     mount_all /vendor/etc/charger_fw_fstab.qti --early

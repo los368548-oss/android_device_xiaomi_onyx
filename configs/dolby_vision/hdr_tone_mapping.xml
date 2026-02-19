@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     HDR Tone Mapping LUT Configuration for Xiaomi Onyx
+     Advanced Perceptual Tone Mapping for HDR Content
+     
+     Copyright (C) 2024 The LineageOS Project
+     Licensed under the Apache License, Version 2.0
+-->
+<HDRToneMapping version="2.0">
+    <!-- PQ (SMPTE ST 2084) Transfer Function Configuration -->
+    <PQTransferFunction>
+        <!-- PQ constants -->
+        <M1>1305/8192</M1>
+        <M2>2523/4096</M2>
+        <C1>107/128</C1>
+        <C2>2413/128</C2>
+        <C3>2392/128</C3>
+        <!-- Reference white level in nits -->
+        <ReferenceWhite>100</ReferenceWhite>
+        <!-- Peak luminance for PQ encoding -->
+        <PeakLuminance>10000</PeakLuminance>
+    </PQTransferFunction>
+
+    <!-- HLG (Hybrid Log-Gamma) Transfer Function Configuration -->
+    <HLGTransferFunction>
+        <!-- HLG constants -->
+        <A>0.17883277</A>
+        <B>0.28466892</B>
+        <C>0.55991073</C>
+        <!-- Reference white level -->
+        <ReferenceWhite>203</ReferenceWhite>
+        <!-- System gamma for different display ranges -->
+        <SystemGamma>
+            <Range min="0" max="1000">1.2</Range>
+            <Range min="1000" max="2000">1.3</Range>
+            <Range min="2000" max="4000">1.4</Range>
+            <Range min="4000" max="10000">1.5</Range>
+        </SystemGamma>
+    </HLGTransferFunction>
+
+    <!-- Global Tone Mapping Curves -->
+    <GlobalToneMapping>
+        <!-- Reinhard Extended Curve -->
+        <Curve name="reinhard_extended" type="parametric">
+            <Parameters>
+                <ShoulderStrength>0.22</ShoulderStrength>
+                <LinearStrength>0.30</LinearStrength>
+                <LinearAngle>0.10</LinearAngle>
+                <ToeStrength>0.20</ToeStrength>
+                <ToeNumerator>0.01</ToeNumerator>
+                <ToeDenominator>0.30</ToeDenominator>
+                <ExposureBias>2.0</ExposureBias>
+            </Parameters>
+            <Formula>
+                // ACES Filmic Tone Mapping Curve
+                // B = ShoulderStrength, C = LinearStrength
+                // D = LinearAngle, E = ToeStrength
+                // F = ToeNumerator, G = ToeDenominator
+                // W = WhitePoint, L = LinearWhite
+                
+                // Compute curve segments
+                float N = (B * (G + F) - E * F) / (B * G + B);
+                float L = ((G + F) * (E - B) + F) / (B * G + B);
+                
+                // Three segment curve
+                // Segment 1: Toe (shadows)
+                // Segment 2: Linear (midtones)  
+                // Segment 3: Shoulder (highlights)
+            </Formula>
+        </Curve>
+
+        <!-- ACES Filmic Curve -->
+        <Curve name="aces_filmic" type="parametric">
+            <Parameters>
+                <A>0.015</A>
+                <B>0.050</B>
+                <C>0.14</C>
+                <D>0.35</D>
+                <E>0.60</E>
+                <F>0.85</F>
+            </Parameters>
+            <Formula>
+                // ACES Filmic approximation
+                // x = input luminance
+                // result = ((x * (A*x + C*B) + D*E) / (x * (A*x + B) + D*F)) - E/F
+                // Optimized for GPU computation
+            </Formula>
+        </Curve>
+
+        <!-- Piecewise Spline Curve -->
+        <Curve name="piecewise_spline" type="interpolated">
+            <ControlPoints>
+                <!-- PQ input (0-1 normalized) -> Display output (0-1) -->
+                <Point input="0.000" output="0.000"/>
+                <Point input="0.001" output="0.008"/>
+                <Point input="0.010" output="0.058"/>
+                <Point input="0.050" output="0.195"/>
+                <Point input="0.100" output="0.312"/>
+                <Point input="0.200" output="0.468"/>
+                <Point input="0.300" output="0.568"/>
+                <Point input="0.400" output="0.645"/>
+                <Point input="0.500" output="0.710"/>
+                <Point input="0.600" output="0.768"/>
+                <Point input="0.700" output="0.820"/>
+                <Point input="0.800" output="0.868"/>
+                <Point input="0.900" output="0.912"/>
+                <Point input="0.950" output="0.935"/>
+                <Point input="0.980" output="0.955"/>
+                <Point input="0.990" output="0.968"/>
+                <Point input="0.995" output="0.978"/>
+                <Point input="0.998" output="0.985"/>
+                <Point input="1.000" output="1.000"/>
+            </ControlPoints>
+            <Interpolation>monotonic_cubic</Interpolation>
+        </Curve>
+
+        <!-- Adaptive Logarithmic Curve -->
+        <Curve name="adaptive_log" type="parametric">
+            <Parameters>
+                <BaseContrast>1.0</BaseContrast>
+                <AdaptationFactor>5.0</AdaptationFactor>
+                <WhitePoint>1.0</WhitePoint>
+            </Parameters>
+            <Formula>
+                // Adaptive logarithmic mapping
+                // Lw = world luminance, Ld = display luminance
+                // Ld = (Lw / (1 + Lw)) * (1 + Lw / (Lwhite^2))
+                // With adaptation for different brightness ranges
+            </Formula>
+        </Curve>
+    </GlobalToneMapping>
+
+    <!-- Local Tone Mapping Operators -->
+    <LocalToneMapping>
+        <!-- Bilateral Filter Based -->
+        <Operator name="bilateral_filter">
+            <Parameters>
+                <SpatialSigma>0.1</SpatialSigma>
+                <RangeSigma>0.3</RangeSigma>
+                <Iterations>3</Iterations>
+            </Parameters>
+            <Implementation>
+                // Fast bilateral filter for local adaptation
+                // Separable approximation for performance
+                // GPU compute shader optimized
+            </Implementation>
+        </Operator>
+
+        <!-- Guided Filter Based -->
+        <Operator name="guided_filter">
+            <Parameters>
+                <Radius>16</Radius>
+                <Epsilon>0.01</Epsilon>
+                <Subsampling>4</Subsampling>
+            </Parameters>
+            <Implementation>
+                // Edge-aware filtering
+                // O(N) complexity
+                // Preserves edges while smoothing
+            </Implementation>
+        </Operator>
+
+        <!-- Local Laplacian Pyramid -->
+        <Operator name="local_laplacian">
+            <Parameters>
+                <Levels>8</Levels>
+                <SigmaR>0.2</SigmaR>
+                <Alpha>1.0</Alpha>
+                <Beta>1.0</Beta>
+            </Parameters>
+            <Implementation>
+                // Multi-scale local contrast manipulation
+                // Excellent detail preservation
+                // Higher computational cost
+            </Implementation>
+        </Operator>
+
+        <!-- Multi-Scale Retinex -->
+        <Operator name="msr">
+            <Parameters>
+                <Scales>
+                    <Scale sigma="15"/>
+                    <Scale sigma="60"/>
+                    <Scale sigma="250"/>
+                </Scales>
+                <Gain>1.5</Gain>
+                <Offset>0.0</Offset>
+            </Parameters>
+            <Implementation>
+                // Retinex-based local adaptation
+                // Good for shadow detail
+                // Multiple Gaussian scales
+            </Implementation>
+        </Operator>
+    </LocalToneMapping>
+
+    <!-- HDR10 Static Metadata Processing -->
+    <HDR10Metadata>
+        <!-- Mastering Display Color Volume -->
+        <MasteringDisplayPrimaries>
+            <Red>
+                <X>0.680</X>
+                <Y>0.320</Y>
+            </Red>
+            <Green>
+                <X>0.265</X>
+                <Y>0.690</Y>
+            </Green>
+            <Blue>
+                <X>0.150</X>
+                <Y>0.060</Y>
+            </Blue>
+            <White>
+                <X>0.3127</X>
+                <Y>0.3290</Y>
+            </White>
+        </MasteringDisplayPrimaries>
+
+        <!-- Mastering Display Luminance Range -->
+        <MasteringDisplayLuminance>
+            <Min>0.0001</Min>
+            <Max>4000</Max>
+        </MasteringDisplayLuminance>
+
+        <!-- Content Light Level -->
+        <ContentLightLevel>
+            <MaxCLL>4000</MaxCLL>
+            <MaxFALL>2000</MaxFALL>
+        </ContentLightLevel>
+
+        <!-- Target Display Configuration -->
+        <TargetDisplay>
+            <PeakLuminance>2000</PeakLuminance>
+            <MinLuminance>0.005</MinLuminance>
+            <Gamut>DCI-P3</Gamut>
+        </TargetDisplay>
+    </HDR10Metadata>
+
+    <!-- HDR10+ Dynamic Metadata Processing -->
+    <HDR10PlusMetadata>
+        <Enabled>true</Enabled>
+        <ProcessingMode>realtime</ProcessingMode>
+        
+        <!-- Scene-by-scene optimization -->
+        <SceneOptimization>
+            <HistogramBins>256</HistogramBins>
+            <PercentileLow>1</PercentileLow>
+            <PercentileHigh>99</PercentileHigh>
+            <ToneMappingMode>bezier</ToneMappingMode>
+        </SceneOptimization>
+
+        <!-- Bezier Curve Parameters -->
+        <BezierCurve>
+            <AnchorPoints>
+                <Point x="0.0" y="0.0"/>
+                <Point x="0.25" y="0.28"/>
+                <Point x="0.5" y="0.55"/>
+                <Point x="0.75" y="0.80"/>
+                <Point x="1.0" y="1.0"/>
+            </AnchorPoints>
+            <TargetLuminance>2000</TargetLuminance>
+        </BezierCurve>
+
+        <!-- Knee Point Adaptation -->
+        <KneeAdaptation>
+            <MinKneeX>0.5</MinKneeX>
+            <MaxKneeX>0.9</MaxKneeX>
+            <MinKneeY>0.5</MinKneeY>
+            <MaxKneeY>0.9</MaxKneeY>
+        </KneeAdaptation>
+    </HDR10PlusMetadata>
+
+    <!-- LUT Generation Parameters -->
+    <LUTGeneration>
+        <!-- 1D LUT for global tone mapping -->
+        <LUT1D>
+            <Size>4096</Size>
+            <Domain>
+                <Min>0.0</Min>
+                <Max>1.0</Max>
+            </Domain>
+            <Interpolation>linear</Interpolation>
+        </LUT1D>
+
+        <!-- 3D LUT for color volume mapping -->
+        <LUT3D>
+            <Size>33</Size>
+            <InputSpace>BT2020_PQ</InputSpace>
+            <OutputSpace>DCI_P3_sRGB</OutputSpace>
+            <Domain>
+                <Min>0.0</Min>
+                <Max>1.0</Max>
+            </Domain>
+            <Interpolation>trilinear</Interpolation>
+            <Tetrahedral>true</Tetrahedral>
+        </LUT3D>
+
+        <!-- Per-channel curves -->
+        <PerChannelCurves>
+            <Red>
+                <Gamma>2.2</Gamma>
+                <Saturation>1.0</Saturation>
+            </Red>
+            <Green>
+                <Gamma>2.2</Gamma>
+                <Saturation>1.0</Saturation>
+            </Green>
+            <Blue>
+                <Gamma>2.2</Gamma>
+                <Saturation>1.0</Saturation>
+            </Blue>
+        </PerChannelCurves>
+    </LUTGeneration>
+
+    <!-- Color Space Transforms -->
+    <ColorSpaceTransforms>
+        <!-- BT.2020 to DCI-P3 -->
+        <Transform name="bt2020_to_dcip3">
+            <Matrix>
+                <!-- 3x3 color adaptation matrix -->
+                <Row r0="1.0" r1="0.0" r2="0.0"/>
+                <Row r0="0.0" r1="1.0" r2="0.0"/>
+                <Row r0="0.0" r1="0.0" r2="1.0"/>
+            </Matrix>
+            <GamutMapping>perceptual</GamutMapping>
+            <HuePreservation>true</HuePreservation>
+        </Transform>
+
+        <!-- BT.2020 to sRGB (for SDR fallback) -->
+        <Transform name="bt2020_to_srgb">
+            <Matrix>
+                <!-- Chromatic adaptation matrix -->
+                <Row r0="1.0128" r1="0.0052" r2="-0.0028"/>
+                <Row r0="0.0180" r1="0.9948" r2="-0.0068"/>
+                <Row r0="0.0402" r1="-0.0452" r2="1.0050"/>
+            </Matrix>
+            <GamutMapping>relative_colorimetric</GamutMapping>
+        </Transform>
+
+        <!-- DCI-P3 to sRGB -->
+        <Transform name="dcip3_to_srgb">
+            <Matrix>
+                <Row r0="0.8225" r1="0.1775" r2="0.0000"/>
+                <Row r0="0.0332" r1="0.9668" r2="0.0000"/>
+                <Row r0="0.0171" r1="0.0745" r2="0.9084"/>
+            </Matrix>
+            <GamutMapping>perceptual</GamutMapping>
+        </Transform>
+    </ColorSpaceTransforms>
+
+    <!-- Detail Enhancement -->
+    <DetailEnhancement>
+        <Enabled>true</Enabled>
+        <Method>adaptive_unsharp_mask</Method>
+        <Parameters>
+            <Radius>2</Radius>
+            <Amount>0.3</Amount>
+            <Threshold>0.01</Threshold>
+        </Parameters>
+        <EdgePreservation>true</EdgePreservation>
+        <NoiseReduction>
+            <Enabled>true</Enabled>
+            <Strength>0.5</Strength>
+            <SpatialSigma>1.0</SpatialSigma>
+        </NoiseReduction>
+    </DetailEnhancement>
+
+    <!-- Clipping and Highlight Handling -->
+    <HighlightHandling>
+        <Mode>soft_clip</Mode>
+        <SoftClipThreshold>0.95</SoftClipThreshold>
+        <SoftClipKnee>0.05</SoftClipKnee>
+        <HighlightRecovery>
+            <Enabled>true</Enabled>
+            <Method>gradient_based</Method>
+            <Strength>0.8</Strength>
+        </HighlightRecovery>
+        <BloomEffect>
+            <Enabled>false</Enabled>
+            <Threshold>0.98</Threshold>
+            <Intensity>0.1</Intensity>
+            <Radius>10</Radius>
+        </BloomEffect>
+    </HighlightHandling>
+
+    <!-- Shadow Enhancement -->
+    <ShadowEnhancement>
+        <Enabled>true</Enabled>
+        <Lift>0.02</Lift>
+        <ShadowContrast>1.1</ShadowContrast>
+        <BlackLevel>0.005</BlackLevel>
+        <NoiseAware>true</NoiseAware>
+        <NoiseThreshold>0.01</NoiseThreshold>
+    </ShadowEnhancement>
+
+    <!-- Performance Optimization -->
+    <PerformanceOptimization>
+        <GPUAcceleration>true</GPUAcceleration>
+        <ComputeShader>true</ComputeShader>
+        <TextureLUT>true</TextureLUT>
+        <FrameBufferCount>3</FrameBufferCount>
+        <ProcessingResolution>
+            <Mode>native</Mode>
+            <DownscaleThreshold>0.5</DownscaleThreshold>
+        </ProcessingResolution>
+        <CacheManagement>
+            <LUTCaching>true</LUTCaching>
+            <MetadataCaching>true</MetadataCaching>
+        </CacheManagement>
+    </PerformanceOptimization>
+</HDRToneMapping>

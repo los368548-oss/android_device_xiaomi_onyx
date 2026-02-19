@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2024 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <!-- Dolby Atmos Profiles -->
+    <string-array name="dolby_profile_entries">
+        <item>@string/dolby_profile_auto</item>
+        <item>@string/dolby_profile_movie</item>
+        <item>@string/dolby_profile_music</item>
+        <item>@string/dolby_profile_game</item>
+        <item>@string/dolby_profile_voice</item>
+        <item>@string/dolby_profile_podcast</item>
+        <item>@string/dolby_profile_audiophile</item>
+        <item>@string/dolby_profile_immersive</item>
+        <item>@string/dolby_profile_custom</item>
+    </string-array>
+
+    <string-array name="dolby_profile_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <!-- Dolby Surround Modes -->
+    <string-array name="dolby_surround_mode_entries">
+        <item>@string/dolby_surround_mode_atmos</item>
+        <item>@string/dolby_surround_mode_studio</item>
+        <item>@string/dolby_surround_mode_movie</item>
+        <item>@string/dolby_surround_mode_music</item>
+        <item>@string/dolby_surround_mode_game</item>
+    </string-array>
+
+    <string-array name="dolby_surround_mode_values">
+        <item>atmos</item>
+        <item>studio</item>
+        <item>movie</item>
+        <item>music</item>
+        <item>game</item>
+    </string-array>
+
+    <!-- Dolby EQ Presets -->
+    <string-array name="dolby_eq_preset_entries">
+        <item>@string/dolby_eq_flat</item>
+        <item>@string/dolby_eq_bass_boost</item>
+        <item>@string/dolby_eq_treble_boost</item>
+        <item>@string/dolby_eq_vocal</item>
+        <item>@string/dolby_eq_electronic</item>
+        <item>@string/dolby_eq_rock</item>
+        <item>@string/dolby_eq_jazz</item>
+        <item>@string/dolby_eq_classical</item>
+        <item>@string/dolby_eq_pop</item>
+    </string-array>
+
+    <string-array name="dolby_eq_preset_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <!-- Dolby Output Devices -->
+    <string-array name="dolby_device_entries">
+        <item>@string/dolby_device_all</item>
+        <item>@string/dolby_device_speaker</item>
+        <item>@string/dolby_device_headphone</item>
+        <item>@string/dolby_device_bluetooth</item>
+        <item>@string/dolby_device_usb</item>
+        <item>@string/dolby_device_hdmi</item>
+    </string-array>
+
+    <string-array name="dolby_device_values">
+        <item>all</item>
+        <item>speaker</item>
+        <item>headphone</item>
+        <item>bluetooth</item>
+        <item>usb</item>
+        <item>hdmi</item>
+    </string-array>
+
+    <!-- Dolby Vision Profiles -->
+    <string-array name="dv_profile_entries">
+        <item>@string/dv_profile_cinema</item>
+        <item>@string/dv_profile_vivid</item>
+        <item>@string/dv_profile_standard</item>
+        <item>@string/dv_profile_game</item>
+        <item>@string/dv_profile_photo</item>
+        <item>@string/dv_profile_sports</item>
+        <item>@string/dv_profile_reading</item>
+        <item>@string/dv_profile_outdoor</item>
+    </string-array>
+
+    <string-array name="dv_profile_values">
+        <item>cinema</item>
+        <item>vivid</item>
+        <item>standard</item>
+        <item>game</item>
+        <item>photo</item>
+        <item>sports</item>
+        <item>reading</item>
+        <item>outdoor</item>
+    </string-array>
+
+    <!-- DV Color Gamut -->
+    <string-array name="dv_color_gamut_entries">
+        <item>@string/dv_gamut_auto</item>
+        <item>@string/dv_gamut_dcip3</item>
+        <item>@string/dv_gamut_srgb</item>
+        <item>@string/dv_gamut_adobe</item>
+    </string-array>
+
+    <string-array name="dv_color_gamut_values">
+        <item>auto</item>
+        <item>dcip3</item>
+        <item>srgb</item>
+        <item>adobe</item>
+    </string-array>
+
+    <!-- DV Peak Brightness -->
+    <string-array name="dv_peak_brightness_entries">
+        <item>@string/dv_brightness_1000</item>
+        <item>@string/dv_brightness_1500</item>
+        <item>@string/dv_brightness_2000</item>
+        <item>@string/dv_brightness_2500</item>
+        <item>@string/dv_brightness_3000</item>
+    </string-array>
+
+    <string-array name="dv_peak_brightness_values">
+        <item>1000</item>
+        <item>1500</item>
+        <item>2000</item>
+        <item>2500</item>
+        <item>3000</item>
+    </string-array>
+
+    <!-- Turbo Charging Modes -->
+    <string-array name="turbo_modes_entries">
+        <item>18W</item>
+        <item>33W</item>
+        <item>45W</item>
+        <item>60W</item>
+        <item>90W</item>
+        <item>120W</item>
+        <item>150W</item>
+        <item>180W</item>
+    </string-array>
+
+    <string-array name="turbo_modes_values">
+        <item>1800000</item>
+        <item>3500000</item>
+        <item>4500000</item>
+        <item>6000000</item>
+        <item>9000000</item>
+        <item>12000000</item>
+        <item>15000000</item>
+        <item>18000000</item>
+    </string-array>
+
+    <!-- USB PD Profiles -->
+    <string-array name="tc_usb_pd_entries">
+        <item>@string/tc_pd_auto</item>
+        <item>@string/tc_pd_standard</item>
+        <item>@string/tc_pd_high_speed</item>
+    </string-array>
+
+    <string-array name="tc_usb_pd_values">
+        <item>auto</item>
+        <item>standard</item>
+        <item>high_speed</item>
+    </string-array>
+
+    <!-- Charge Limit -->
+    <string-array name="tc_charge_limit_entries">
+        <item>80%</item>
+        <item>85%</item>
+        <item>90%</item>
+        <item>95%</item>
+        <item>100%</item>
+    </string-array>
+
+    <string-array name="tc_charge_limit_values">
+        <item>80</item>
+        <item>85</item>
+        <item>90</item>
+        <item>95</item>
+        <item>100</item>
+    </string-array>
+</resources>

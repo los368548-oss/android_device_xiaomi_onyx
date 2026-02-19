@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Dolby Vision Configuration for Xiaomi Onyx (POCO F7)
+     Advanced HDR Display Algorithm Configuration
+     
+     Copyright (C) 2024 The LineageOS Project
+     Licensed under the Apache License, Version 2.0
+-->
+<DolbyVisionConfig version="2.0">
+    <!-- Display Capabilities -->
+    <DisplayCapabilities>
+        <!-- Peak luminance in nits -->
+        <PeakLuminance>2000</PeakLuminance>
+        <!-- Minimum luminance in nits -->
+        <MinLuminance>0.005</MinLuminance>
+        <!-- Display gamma curve -->
+        <Gamma>2.2</Gamma>
+        <!-- Color gamut support -->
+        <ColorGamut>DCI-P3</ColorGamut>
+        <!-- Bit depth support -->
+        <BitDepth>10</BitDepth>
+        <!-- HDR format support -->
+        <HDRFormats>
+            <Format>DolbyVision</Format>
+            <Format>HDR10</Format>
+            <Format>HDR10Plus</Format>
+            <Format>HLG</Format>
+        </HDRFormats>
+        <!-- Dynamic refresh rate support -->
+        <DynamicRefreshRate>
+            <Min>1</Min>
+            <Max>144</Max>
+            <VariableRefreshRate>true</VariableRefreshRate>
+        </DynamicRefreshRate>
+    </DisplayCapabilities>
+
+    <!-- Dolby Vision Profiles -->
+    <VisionProfiles>
+        <!-- Cinema Profile - Optimized for movies -->
+        <Profile name="cinema" id="1">
+            <ToneMapping>
+                <Algorithm>adaptive_clipping</Algorithm>
+                <KneePoint>0.75</KneePoint>
+                <ShoulderContrast>1.2</ShoulderContrast>
+                <HighlightRecovery>0.85</HighlightRecovery>
+                <ShadowDetail>0.90</ShadowDetail>
+            </ToneMapping>
+            <ColorVolume>
+                <SaturationPreservation>0.95</SaturationPreservation>
+                <HuePreservation>1.0</HuePreservation>
+                <GamutMapping>perceptual</GamutMapping>
+            </ColorVolume>
+            <DynamicMetadata>
+                <L1MaxCLL>4000</L1MaxCLL>
+                <L1MaxFALL>2000</L1MaxFALL>
+                <L2TrimEnabled>true</L2TrimEnabled>
+                <L5AspectRatio>2.39</L5AspectRatio>
+            </DynamicMetadata>
+            <ProcessingMode>reference</ProcessingMode>
+        </Profile>
+
+        <!-- Vivid Profile - Enhanced colors and brightness -->
+        <Profile name="vivid" id="2">
+            <ToneMapping>
+                <Algorithm>highlight_boost</Algorithm>
+                <KneePoint>0.70</KneePoint>
+                <ShoulderContrast>1.4</ShoulderContrast>
+                <HighlightRecovery>0.95</HighlightRecovery>
+                <ShadowDetail>0.85</ShadowDetail>
+            </ToneMapping>
+            <ColorVolume>
+                <SaturationPreservation>1.15</SaturationPreservation>
+                <HuePreservation>0.98</HuePreservation>
+                <GamutMapping>saturation</GamutMapping>
+            </ColorVolume>
+            <DynamicMetadata>
+                <L1MaxCLL>5000</L1MaxCLL>
+                <L1MaxFALL>2500</L1MaxFALL>
+                <L2TrimEnabled>true</L2TrimEnabled>
+            </DynamicMetadata>
+            <ProcessingMode>enhanced</ProcessingMode>
+        </Profile>
+
+        <!-- Sports Profile - Motion clarity optimized -->
+        <Profile name="sports" id="3">
+            <ToneMapping>
+                <Algorithm>fast_adaptive</Algorithm>
+                <KneePoint>0.80</KneePoint>
+                <ShoulderContrast>1.1</ShoulderContrast>
+                <HighlightRecovery>0.80</HighlightRecovery>
+                <ShadowDetail>0.95</ShadowDetail>
+            </ToneMapping>
+            <ColorVolume>
+                <SaturationPreservation>1.05</SaturationPreservation>
+                <HuePreservation>1.0</HuePreservation>
+                <GamutMapping>relative_colorimetric</GamutMapping>
+            </ColorVolume>
+            <MotionProcessing>
+                <MotionInterpolation>true</MotionInterpolation>
+                <MotionBlurReduction>0.7</MotionBlurReduction>
+                <JudderReduction>0.5</JudderReduction>
+            </MotionProcessing>
+            <ProcessingMode>sports</ProcessingMode>
+        </Profile>
+
+        <!-- Game Profile - Low latency HDR -->
+        <Profile name="game" id="4">
+            <ToneMapping>
+                <Algorithm>low_latency</Algorithm>
+                <KneePoint>0.72</KneePoint>
+                <ShoulderContrast>1.3</ShoulderContrast>
+                <HighlightRecovery>0.88</HighlightRecovery>
+                <ShadowDetail>0.92</ShadowDetail>
+            </ToneMapping>
+            <ColorVolume>
+                <SaturationPreservation>1.10</SaturationPreservation>
+                <HuePreservation>1.0</HuePreservation>
+                <GamutMapping>perceptual</GamutMapping>
+            </ColorVolume>
+            <LowLatencyMode>
+                <ProcessingDelay>5</ProcessingDelay>
+                <FrameQueue>1</FrameQueue>
+                <VRRSupport>true</VRRSupport>
+            </LowLatencyMode>
+            <ProcessingMode>game</ProcessingMode>
+        </Profile>
+
+        <!-- Photo Profile - Accurate color reproduction -->
+        <Profile name="photo" id="5">
+            <ToneMapping>
+                <Algorithm>reference</Algorithm>
+                <KneePoint>0.78</KneePoint>
+                <ShoulderContrast>1.15</ShoulderContrast>
+                <HighlightRecovery>0.90</HighlightRecovery>
+                <ShadowDetail>0.95</ShadowDetail>
+            </ToneMapping>
+            <ColorVolume>
+                <SaturationPreservation>1.0</SaturationPreservation>
+                <HuePreservation>1.0</HuePreservation>
+                <GamutMapping>absolute_colorimetric</GamutMapping>
+            </ColorVolume>
+            <ProcessingMode>reference</ProcessingMode>
+        </Profile>
+
+        <!-- Standard Profile - Balanced for all content -->
+        <Profile name="standard" id="6">
+            <ToneMapping>
+                <Algorithm>balanced</Algorithm>
+                <KneePoint>0.75</KneePoint>
+                <ShoulderContrast>1.25</ShoulderContrast>
+                <HighlightRecovery>0.85</HighlightRecovery>
+                <ShadowDetail>0.90</ShadowDetail>
+            </ToneMapping>
+            <ColorVolume>
+                <SaturationPreservation>1.0</SaturationPreservation>
+                <HuePreservation>1.0</HuePreservation>
+                <GamutMapping>perceptual</GamutMapping>
+            </ColorVolume>
+            <ProcessingMode>standard</ProcessingMode>
+        </Profile>
+    </VisionProfiles>
+
+    <!-- Advanced Tone Mapping Algorithms -->
+    <ToneMappingAlgorithms>
+        <!-- Adaptive Clipping Algorithm -->
+        <Algorithm name="adaptive_clipping">
+            <Type>global_local_hybrid</Type>
+            <GlobalOperator>
+                <Method>reinhard_extended</Method>
+                <Parameter name="whitepoint">1.0</Parameter>
+                <Parameter name="adaptation">0.85</Parameter>
+            </GlobalOperator>
+            <LocalOperator>
+                <Method>local_tmo</Method>
+                <WindowSize>32</WindowSize>
+                <Saturation>1.1</Saturation>
+                <DetailEnhancement>1.2</DetailEnhancement>
+            </LocalOperator>
+            <HybridBlend>
+                <GlobalWeight>0.6</GlobalWeight>
+                <LocalWeight>0.4</LocalWeight>
+            </HybridBlend>
+        </Algorithm>
+
+        <!-- Highlight Boost Algorithm -->
+        <Algorithm name="highlight_boost">
+            <Type>local</Type>
+            <LocalOperator>
+                <Method>adaptive_log</Method>
+                <BaseContrast>1.15</BaseContrast>
+                <HighlightBoost>1.4</HighlightBoost>
+                <ShadowLift>0.1</ShadowLift>
+                <DetailClipping>0.95</DetailClipping>
+            </LocalOperator>
+            <SpectralProcessing>
+                <Enabled>true</Enabled>
+                <SpectralSlope>0.5</SpectralSlope>
+            </SpectralProcessing>
+        </Algorithm>
+
+        <!-- Fast Adaptive Algorithm -->
+        <Algorithm name="fast_adaptive">
+            <Type>global</Type>
+            <GlobalOperator>
+                <Method>fast_bilateral</Method>
+                <SigmaSpace>0.1</SigmaSpace>
+                <SigmaRange>0.3</SigmaRange>
+                <Iterations>2</Iterations>
+            </GlobalOperator>
+            <Optimization>
+                <SIMD>true</SIMD>
+                <GPU>true</GPU>
+                <CacheResults>true</CacheResults>
+            </Optimization>
+        </Algorithm>
+
+        <!-- Low Latency Algorithm -->
+        <Algorithm name="low_latency">
+            <Type>global</Type>
+            <GlobalOperator>
+                <Method>piecewise_linear</Method>
+                <Segments>4</Segments>
+                <OptimizationLevel>3</OptimizationLevel>
+            </GlobalOperator>
+            <Performance>
+                <MaxProcessingTime>4</MaxProcessingTime>
+                <PipelineStages>2</PipelineStages>
+            </Performance>
+        </Algorithm>
+
+        <!-- Balanced Algorithm -->
+        <Algorithm name="balanced">
+            <Type>global_local_hybrid</Type>
+            <GlobalOperator>
+                <Method>aces_filmic</Method>
+                <Parameter name="shoulder_strength">0.22</Parameter>
+                <Parameter name="toe_strength">0.30</Parameter>
+            </GlobalOperator>
+            <LocalOperator>
+                <Method>guided_filter</Method>
+                <Radius>16</Radius>
+                <Epsilon>0.01</Epsilon>
+            </LocalOperator>
+            <HybridBlend>
+                <GlobalWeight>0.7</GlobalWeight>
+                <LocalWeight>0.3</LocalWeight>
+            </HybridBlend>
+        </Algorithm>
+
+        <!-- Reference Algorithm -->
+        <Algorithm name="reference">
+            <Type>global</Type>
+            <GlobalOperator>
+                <Method>spline</Method>
+                <ControlPoints>
+                    <Point x="0.0" y="0.0"/>
+                    <Point x="0.25" y="0.27"/>
+                    <Point x="0.5" y="0.52"/>
+                    <Point x="0.75" y="0.77"/>
+                    <Point x="1.0" y="1.0"/>
+                </ControlPoints>
+            </GlobalOperator>
+            <Quality>
+                <Precision>high</Precision>
+                <Dithering>true</Dithering>
+            </Quality>
+        </Algorithm>
+    </ToneMappingAlgorithms>
+
+    <!-- Color Volume Mapping -->
+    <ColorVolumeMapping>
+        <!-- Primary Color Volume Transform -->
+        <PrimaryTransform>
+            <Method>3D_LUT</Method>
+            <LUTSize>33</LUTSize>
+            <Interpolation>trilinear</Interpolation>
+            <Precision>16</Precision>
+        </PrimaryTransform>
+
+        <!-- Gamut Mapping Configuration -->
+        <GamutMappingConfig>
+            <!-- Perceptual mapping for natural colors -->
+            <Perceptual>
+                <HueShiftCompensation>0.15</HueShiftCompensation>
+                <ChromaPreservation>0.85</ChromaPreservation>
+                <LightnessAdaptation>0.9</LightnessAdaptation>
+            </Perceptual>
+            
+            <!-- Saturation mapping for vivid colors -->
+            <Saturation>
+                <HueShiftCompensation>0.05</HueShiftCompensation>
+                <ChromaPreservation>1.1</ChromaPreservation>
+                <LightnessAdaptation>0.95</LightnessAdaptation>
+            </Saturation>
+            
+            <!-- Relative colorimetric for accuracy -->
+            <RelativeColorimetric>
+                <HueShiftCompensation>0.0</HueShiftCompensation>
+                <ChromaPreservation>1.0</ChromaPreservation>
+                <LightnessAdaptation>1.0</LightnessAdaptation>
+            </RelativeColorimetric>
+            
+            <!-- Absolute colorimetric for reference -->
+            <AbsoluteColorimetric>
+                <HueShiftCompensation>0.0</HueShiftCompensation>
+                <ChromaPreservation>1.0</ChromaPreservation>
+                <LightnessAdaptation>1.0</LightnessAdaptation>
+                <WhitePointAdaptation>none</WhitePointAdaptation>
+            </AbsoluteColorimetric>
+        </GamutMappingConfig>
+
+        <!-- HDR to SDR Cross-Conversion -->
+        <HDRtoSDR>
+            <Enabled>true</Enabled>
+            <ToneMappingMethod>adaptive</ToneMappingMethod>
+            <ColorSpaceConversion>bt2020_to_bt709</ColorSpaceConversion>
+            <GammaCorrection>bt1886</GammaCorrection>
+        </HDRtoSDR>
+    </ColorVolumeMapping>
+
+    <!-- Dynamic Metadata Processing -->
+    <DynamicMetadataProcessing>
+        <!-- Dolby Vision RPU (Reference Processing Unit) -->
+        <RPUConfig>
+            <Version>4.0</Version>
+            <DMMode>dynamic</DMMode>
+            <CMVersion>2.9</CMVersion>
+            <ProcessingMode>realtime</ProcessingMode>
+        </RPUConfig>
+
+        <!-- Level 1 Metadata (Global) -->
+        <L1Metadata>
+            <MinPQ>0</MinPQ>
+            <MaxPQ>4095</MaxPQ>
+            <AvgPQ>2048</AvgPQ>
+        </L1Metadata>
+
+        <!-- Level 2 Metadata (Local Trim) -->
+        <L2Metadata>
+            <Enabled>true</Enabled>
+            <TrimMethod>smart</TrimMethod>
+            <TargetDisplay>
+                <PeakBrightness>2000</PeakBrightness>
+                <MinBrightness>0.005</MinBrightness>
+            </TargetDisplay>
+        </L2Metadata>
+
+        <!-- Level 5 Metadata (Aspect Ratio) -->
+        <L5Metadata>
+            <ActiveAreaLeft>0</ActiveAreaLeft>
+            <ActiveAreaRight>0</ActiveAreaRight>
+            <ActiveAreaTop>0</ActiveAreaTop>
+            <ActiveAreaBottom>0</ActiveAreaBottom>
+        </L5Metadata>
+
+        <!-- Level 6 Metadata (Mastering Display) -->
+        <L6Metadata>
+            <MasteringDisplay>
+                <Primaries>
+                    <Red x="0.680" y="0.320"/>
+                    <Green x="0.265" y="0.690"/>
+                    <Blue x="0.150" y="0.060"/>
+                    <White x="0.3127" y="0.3290"/>
+                </Primaries>
+                <MinLuminance>0.0001</MinLuminance>
+                <MaxLuminance>4000</MaxLuminance>
+                <MaxCLL>4000</MaxCLL>
+                <MaxFALL>2000</MaxFALL>
+            </MasteringDisplay>
+        </L6Metadata>
+
+        <!-- Level 254 Metadata (DM Data) -->
+        <L254Metadata>
+            <DMVersion>4</DMVersion>
+            <CMVersion>2</CMVersion>
+            <SceneCutDetection>true</SceneCutDetection>
+        </L254Metadata>
+    </DynamicMetadataProcessing>
+
+    <!-- Ambient Light Adaptation -->
+    <AmbientLightAdaptation>
+        <Enabled>true</Enabled>
+        <SensorType>auto_brightness</SensorType>
+        <AdaptationCurve>
+            <!-- Ambient lux levels and corresponding display adjustments -->
+            <Point lux="0" brightness="0.005" tone_mapping="dark_room"/>
+            <Point lux="10" brightness="100" tone_mapping="dim"/>
+            <Point lux="50" brightness="300" tone_mapping="normal"/>
+            <Point lux="100" brightness="500" tone_mapping="normal"/>
+            <Point lux="300" brightness="800" tone_mapping="bright"/>
+            <Point lux="500" brightness="1200" tone_mapping="bright"/>
+            <Point lux="1000" brightness="1600" tone_mapping="outdoor"/>
+            <Point lux="3000" brightness="2000" tone_mapping="outdoor"/>
+        </AdaptationCurve>
+        <ResponseTime>500</ResponseTime>
+        <SmoothingFilter>exponential</SmoothingFilter>
+    </AmbientLightAdaptation>
+
+    <!-- Content Detection -->
+    <ContentDetection>
+        <Enabled>true</Enabled>
+        <AutoModeSwitch>true</AutoModeSwitch>
+        <DetectionMethods>
+            <Method>metadata_analysis</Method>
+            <Method>histogram_analysis</Method>
+            <Method>motion_vector</Method>
+            <Method>scene_classification</Method>
+        </DetectionMethods>
+        <ContentTypes>
+            <Type name="movie" profile="cinema">
+                <DetectionConfidence>0.85</DetectionConfidence>
+                <Features>
+                    <Feature>film_grain</Feature>
+                    <Feature>24fps</Feature>
+                    <Feature>letterbox</Feature>
+                </Features>
+            </Type>
+            <Type name="sports" profile="sports">
+                <DetectionConfidence>0.80</DetectionConfidence>
+                <Features>
+                    <Feature>high_motion</Feature>
+                    <Feature>green_field</Feature>
+                    <Feature>score_overlay</Feature>
+                </Features>
+            </Type>
+            <Type name="game" profile="game">
+                <DetectionConfidence>0.90</DetectionConfidence>
+                <Features>
+                    <Feature>low_latency_flag</Feature>
+                    <Feature>game_mode_api</Feature>
+                    <Feature>high_framerate</Feature>
+                </Features>
+            </Type>
+            <Type name="photo" profile="photo">
+                <DetectionConfidence>0.85</DetectionConfidence>
+                <Features>
+                    <Feature>static_image</Feature>
+                    <Feature>gallery_app</Feature>
+                </Features>
+            </Type>
+            <Type name="animation" profile="vivid">
+                <DetectionConfidence>0.75</DetectionConfidence>
+                <Features>
+                    <Feature>flat_shading</Feature>
+                    <Feature>edge_detection</Feature>
+                    <Feature>saturated_colors</Feature>
+                </Features>
+            </Type>
+        </ContentTypes>
+    </ContentDetection>
+
+    <!-- Display Calibration Data -->
+    <DisplayCalibration>
+        <!-- Factory Calibration -->
+        <FactoryCalibration>
+            <PanelType>AMOLED</PanelType>
+            <ColorAccuracy dE2000="1.5"/>
+            <GrayscaleAccuracy dE2000="1.0"/>
+            <GammaTracking dE="0.02"/>
+            <UniformityCompensation>true</UniformityCompensation>
+        </FactoryCalibration>
+
+        <!-- Color Temperature Presets -->
+        <ColorTemperature>
+            <Preset name="cool" temperature="9300K">
+                <Red>0.95</Red>
+                <Green>1.0</Green>
+                <Blue>1.05</Blue>
+            </Preset>
+            <Preset name="standard" temperature="6500K">
+                <Red>1.0</Red>
+                <Green>1.0</Green>
+                <Blue>1.0</Blue>
+            </Preset>
+            <Preset name="warm" temperature="5000K">
+                <Red>1.05</Red>
+                <Green>1.0</Green>
+                <Blue>0.95</Blue>
+            </Preset>
+        </ColorTemperature>
+
+        <!-- Panel Specific Parameters -->
+        <PanelParameters>
+            <SubPixelLayout>Pentile</SubPixelLayout>
+            <PPI>460</PPI>
+            <PWMFrequency>360</PWMFrequency>
+            <DCDimming>true</DCDimming>
+            <HDRBrightnessBoost>2.0</HDRBrightnessBoost>
+        </PanelParameters>
+    </DisplayCalibration>
+
+    <!-- Power Management -->
+    <PowerManagement>
+        <ThermalThrottling>
+            <Enabled>true</Enabled>
+            <TemperatureThresholds>
+                <Threshold temp="35" brightness_limit="2000"/>
+                <Threshold temp="40" brightness_limit="1500"/>
+                <Threshold temp="45" brightness_limit="1000"/>
+                <Threshold temp="50" brightness_limit="500"/>
+            </TemperatureThresholds>
+        </ThermalThrottling>
+        <BatterySaver>
+            <Enabled>true</Enabled>
+            <BrightnessLimit>500</BrightnessLimit>
+            <ToneMappingAdjustment>0.8</ToneMappingAdjustment>
+        </BatterySaver>
+    </PowerManagement>
+
+    <!-- Debug and Diagnostics -->
+    <Diagnostics>
+        <Enabled>false</Enabled>
+        <LogLevel>info</LogLevel>
+        <FrameDumps>false</FrameDumps>
+        <PerformanceMetrics>true</PerformanceMetrics>
+    </Diagnostics>
+
+    <!-- Advanced Processing Module Reference -->
+    <AdvancedProcessingModule>
+        <ConfigFile>advanced_processing.xml</ConfigFile>
+        <Enabled>true</Enabled>
+        <Features>
+            <MultiScaleToneMapping>true</MultiScaleToneMapping>
+            <ICtCpProcessing>true</ICtCpProcessing>
+            <TemporalCoherence>true</TemporalCoherence>
+            <NoiseReduction>true</NoiseReduction>
+            <LocalContrastEnhancement>true</LocalContrastEnhancement>
+            <SceneAdaptiveProcessing>true</SceneAdaptiveProcessing>
+            <MLEnhancement>true</MLEnhancement>
+        </Features>
+    </AdvancedProcessingModule>
+
+    <!-- Intelligent Algorithms Module Reference -->
+    <IntelligentAlgorithmsModule>
+        <ConfigFile>intelligent_algorithms.xml</ConfigFile>
+        <Enabled>true</Enabled>
+        <Features>
+            <NeuralToneMapping>true</NeuralToneMapping>
+            <SceneUnderstanding>true</SceneUnderstanding>
+            <AdaptiveLearning>true</AdaptiveLearning>
+            <AdvancedColorScience>true</AdvancedColorScience>
+            <IntelligentDynamicMetadata>true</IntelligentDynamicMetadata>
+            <PerceptualQualityEnhancement>true</PerceptualQualityEnhancement>
+            <RealTimeOptimization>true</RealTimeOptimization>
+            <QualityAssurance>true</QualityAssurance>
+        </Features>
+        <AIModels>
+            <Model name="OnyxDHDRNet_v3" enabled="true"/>
+            <Model name="MobileNetV3_Seg" enabled="true"/>
+            <Model name="YOLOv8_Nano" enabled="true"/>
+            <Model name="MiDaS_Lite" enabled="true"/>
+        </AIModels>
+    </IntelligentAlgorithmsModule>
+</DolbyVisionConfig>

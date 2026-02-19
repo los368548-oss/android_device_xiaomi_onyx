@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Content Detection Configuration for Xiaomi Onyx
+     AI-based Content Analysis and Mode Selection
+     
+     Copyright (C) 2024 The LineageOS Project
+     Licensed under the Apache License, Version 2.0
+-->
+<ContentDetection version="2.0">
+    <!-- Detection Engine Configuration -->
+    <EngineConfig>
+        <Enabled>true</Enabled>
+        <Mode>auto</Mode>
+        <AutoModeSwitch>true</AutoModeSwitch>
+        <DetectionInterval>1000</DetectionInterval>
+        <ConfidenceThreshold>0.75</ConfidenceThreshold>
+    </EngineConfig>
+
+    <!-- Detection Methods -->
+    <DetectionMethods>
+        <!-- Metadata Analysis -->
+        <Method name="metadata_analysis" priority="1">
+            <Description>Analyze embedded HDR metadata</Description>
+            <Enabled>true</Enabled>
+            <Parameters>
+                <HDRFormatDetection>true</HDRFormatDetection>
+                <ColorSpaceDetection>true</ColorSpaceDetection>
+                <DynamicRangeDetection>true</DynamicRangeDetection>
+            </Parameters>
+        </Method>
+
+        <!-- Histogram Analysis -->
+        <Method name="histogram_analysis" priority="2">
+            <Description>Analyze luminance and color distribution</Description>
+            <Enabled>true</Enabled>
+            <Parameters>
+                <LuminanceHistogram>true</LuminanceHistogram>
+                <ColorHistogram>true</ColorHistogram>
+                <Bins>256</Bins>
+                <FrameSampling>1</FrameSampling>
+            </Parameters>
+            <Features>
+                <Feature name="contrast_ratio">Standard deviation of luminance</Feature>
+                <Feature name="brightness_distribution">Mean and median luminance</Feature>
+                <Feature name="color_saturation">Average chroma in HSV</Feature>
+            </Features>
+        </Method>
+
+        <!-- Motion Vector Analysis -->
+        <Method name="motion_vector" priority="3">
+            <Description>Analyze motion patterns for content type</Description>
+            <Enabled>true</Enabled>
+            <Parameters>
+                <MotionEstimation>block_based</MotionEstimation>
+                <BlockSize>16</BlockSize>
+                <SearchRange>32</SearchRange>
+            </Parameters>
+            <Features>
+                <Feature name="motion_intensity">Average motion vector magnitude</Feature>
+                <Feature name="motion_uniformity">Variance of motion vectors</Feature>
+                <Feature name="frame_rate">Detected frame rate</Feature>
+            </Features>
+        </Method>
+
+        <!-- Scene Classification -->
+        <Method name="scene_classification" priority="4">
+            <Description>AI-based scene type classification</Description>
+            <Enabled>true</Enabled>
+            <Parameters>
+                <ModelType>lightweight_cnn</ModelType>
+                <InputSize>224x224</InputSize>
+                <Categories>10</Categories>
+            </Parameters>
+            <Features>
+                <Feature name="scene_type">Indoor/outdoor/mixed</Feature>
+                <Feature name="lighting_condition">Bright/dim/night</Feature>
+                <Feature name="scene_complexity">Simple/complex</Feature>
+            </Features>
+        </Method>
+
+        <!-- Edge Detection -->
+        <Method name="edge_detection" priority="5">
+            <Description>Detect edges for animation vs live action</Description>
+            <Enabled>true</Enabled>
+            <Parameters>
+                <Method>canny</Method>
+                <Threshold1>50</Threshold1>
+                <Threshold2>150</Threshold2>
+            </Parameters>
+            <Features>
+                <Feature name="edge_density">Percentage of edge pixels</Feature>
+                <Feature name="edge_sharpness">Average edge gradient</Feature>
+            </Features>
+        </Method>
+
+        <!-- Color Analysis -->
+        <Method name="color_analysis" priority="6">
+            <Description>Analyze color characteristics</Description>
+            <Enabled>true</Enabled>
+            <Parameters>
+                <ColorSpace>HSV</ColorSpace>
+                <SaturationThreshold>0.7</SaturationThreshold>
+            </Parameters>
+            <Features>
+                <Feature name="saturation_mean">Average saturation</Feature>
+                <Feature name="saturation_variance">Saturation variance</Feature>
+                <Feature name="dominant_hue">Most common hue</Feature>
+                <Feature name="color_richness">Unique color count</Feature>
+            </Features>
+        </Method>
+    </DetectionMethods>
+
+    <!-- Content Type Definitions -->
+    <ContentTypes>
+        <!-- Movie Content -->
+        <Type name="movie" profile="cinema">
+            <DetectionConfidence>0.85</DetectionConfidence>
+            <Features>
+                <Feature name="film_grain" weight="0.8">
+                    <DetectionMethod>noise_analysis</DetectionMethod>
+                    <Threshold>0.15</Threshold>
+                </Feature>
+                <Feature name="frame_rate" weight="0.9">
+                    <ExpectedValues>23.976, 24, 25</ExpectedValues>
+                </Feature>
+                <Feature name="letterbox" weight="0.7">
+                    <DetectionMethod>black_bar_detection</DetectionMethod>
+                    <AspectRatioThreshold>2.0</AspectRatioThreshold>
+                </Feature>
+                <Feature name="motion_pattern" weight="0.6">
+                    <Pattern>cinematic</Pattern>
+                    <MotionIntensity>medium</MotionIntensity>
+                </Feature>
+                <Feature name="color_grading" weight="0.5">
+                    <DetectionMethod>color_analysis</DetectionMethod>
+                    <ExpectedStyle>cinematic</ExpectedStyle>
+                </Feature>
+            </Features>
+            <HDRSettings>
+                <ToneMapping>adaptive_clipping</ToneMapping>
+                <ColorTemperature>6500</ColorTemperature>
+                <MotionInterpolation>false</MotionInterpolation>
+            </HDRSettings>
+        </Type>
+
+        <!-- Sports Content -->
+        <Type name="sports" profile="sports">
+            <DetectionConfidence>0.80</DetectionConfidence>
+            <Features>
+                <Feature name="high_motion" weight="0.9">
+                    <MotionIntensity>high</MotionIntensity>
+                    <MotionUniformity>low</MotionUniformity>
+                </Feature>
+                <Feature name="green_field" weight="0.7">
+                    <DominantHue>120</DominantHue>
+                    <SaturationRange>0.4-0.8</SaturationRange>
+                </Feature>
+                <Feature name="score_overlay" weight="0.6">
+                    <DetectionMethod>static_overlay</DetectionMethod>
+                    <Position>top_corner</Position>
+                </Feature>
+                <Feature name="frame_rate" weight="0.8">
+                    <ExpectedValues>50, 59.94, 60</ExpectedValues>
+                </Feature>
+                <Feature name="camera_motion" weight="0.7">
+                    <Pattern>panning</Pattern>
+                    <ZoomDetection>true</ZoomDetection>
+                </Feature>
+            </Features>
+            <HDRSettings>
+                <ToneMapping>fast_adaptive</ToneMapping>
+                <MotionInterpolation>true</MotionInterpolation>
+                <MotionBlurReduction>0.7</MotionBlurReduction>
+            </HDRSettings>
+        </Type>
+
+        <!-- Game Content -->
+        <Type name="game" profile="game">
+            <DetectionConfidence>0.90</DetectionConfidence>
+            <Features>
+                <Feature name="low_latency_flag" weight="1.0">
+                    <DetectionMethod>api_flag</DetectionMethod>
+                </Feature>
+                <Feature name="game_mode_api" weight="1.0">
+                    <DetectionMethod>system_api</DetectionMethod>
+                </Feature>
+                <Feature name="high_framerate" weight="0.8">
+                    <ExpectedValues>60, 90, 120, 144</ExpectedValues>
+                </Feature>
+                <Feature name="edge_sharpness" weight="0.6">
+                    <Threshold>0.8</Threshold>
+                </Feature>
+                <Feature name="ui_elements" weight="0.5">
+                    <DetectionMethod>hud_detection</DetectionMethod>
+                </Feature>
+            </Features>
+            <HDRSettings>
+                <ToneMapping>low_latency</ToneMapping>
+                <ProcessingDelay>5</ProcessingDelay>
+                <VRRSupport>true</VRRSupport>
+            </HDRSettings>
+        </Type>
+
+        <!-- Photo/Image Content -->
+        <Type name="photo" profile="photo">
+            <DetectionConfidence>0.85</DetectionConfidence>
+            <Features>
+                <Feature name="static_image" weight="0.95">
+                    <MotionIntensity>0</MotionIntensity>
+                    <Duration>5000</Duration>
+                </Feature>
+                <Feature name="gallery_app" weight="0.8">
+                    <DetectionMethod>app_package</DetectionMethod>
+                </Feature>
+                <Feature name="exif_data" weight="0.7">
+                    <DetectionMethod>metadata</DetectionMethod>
+                </Feature>
+            </Features>
+            <HDRSettings>
+                <ToneMapping>reference</ToneMapping>
+                <ColorAccuracy>maximum</ColorAccuracy>
+                <GamutMapping>absolute_colorimetric</GamutMapping>
+            </HDRSettings>
+        </Type>
+
+        <!-- Animation/Anime Content -->
+        <Type name="animation" profile="vivid">
+            <DetectionConfidence>0.75</DetectionConfidence>
+            <Features>
+                <Feature name="flat_shading" weight="0.8">
+                    <ColorVariance>low</ColorVariance>
+                    <EdgeSharpness>high</EdgeSharpness>
+                </Feature>
+                <Feature name="edge_detection" weight="0.7">
+                    <EdgeDensity>high</EdgeDensity>
+                    <EdgeType>sharp</EdgeType>
+                </Feature>
+                <Feature name="saturated_colors" weight="0.8">
+                    <SaturationMean>0.7</SaturationMean>
+                    <ColorRichness>high</ColorRichness>
+                </Feature>
+                <Feature name="frame_rate" weight="0.6">
+                    <ExpectedValues>23.976, 24, 30</ExpectedValues>
+                </Feature>
+                <Feature name="cel_shading" weight="0.6">
+                    <DetectionMethod>color_quantization</DetectionMethod>
+                </Feature>
+            </Features>
+            <HDRSettings>
+                <ToneMapping>highlight_boost</ToneMapping>
+                <SaturationBoost>1.15</SaturationBoost>
+                <EdgeEnhancement>0.2</EdgeEnhancement>
+            </HDRSettings>
+        </Type>
+
+        <!-- Documentary Content -->
+        <Type name="documentary" profile="standard">
+            <DetectionConfidence>0.70</DetectionConfidence>
+            <Features>
+                <Feature name="mixed_content" weight="0.6">
+                    <SceneVariety>high</SceneVariety>
+                </Feature>
+                <Feature name="narration_audio" weight="0.5">
+                    <DetectionMethod>audio_analysis</DetectionMethod>
+                </Feature>
+                <Feature name="interview_segments" weight="0.6">
+                    <FaceDetection>true</FaceDetection>
+                    <StaticBackground>true</StaticBackground>
+                </Feature>
+            </Features>
+            <HDRSettings>
+                <ToneMapping>balanced</ToneMapping>
+                <ColorTemperature>6500</ColorTemperature>
+            </HDRSettings>
+        </Type>
+
+        <!-- Music Video Content -->
+        <Type name="music_video" profile="vivid">
+            <DetectionConfidence>0.70</DetectionConfidence>
+            <Features>
+                <Feature name="rapid_cuts" weight="0.8">
+                    <SceneChangeRate>high</SceneChangeRate>
+                </Feature>
+                <Feature name="visual_effects" weight="0.7">
+                    <ColorGrading>stylized</ColorGrading>
+                </Feature>
+                <Feature name="music_audio" weight="0.6">
+                    <DetectionMethod>audio_analysis</DetectionMethod>
+                </Feature>
+            </Features>
+            <HDRSettings>
+                <ToneMapping>highlight_boost</ToneMapping>
+                <SaturationBoost>1.1</SaturationBoost>
+            </HDRSettings>
+        </Type>
+
+        <!-- News Content -->
+        <Type name="news" profile="standard">
+            <DetectionConfidence>0.75</DetectionConfidence>
+            <Features>
+                <Feature name="news_ticker" weight="0.8">
+                    <DetectionMethod>scrolling_text</DetectionMethod>
+                    <Position>bottom</Position>
+                </Feature>
+                <Feature name="studio_setting" weight="0.6">
+                    <BackgroundType>static</BackgroundType>
+                </Feature>
+                <Feature name="talking_head" weight="0.7">
+                    <FaceDetection>true</FaceDetection>
+                    <SingleSubject>true</SingleSubject>
+                </Feature>
+            </Features>
+            <HDRSettings>
+                <ToneMapping>balanced</ToneMapping>
+                <SkinToneProtection>true</SkinToneProtection>
+            </HDRSettings>
+        </Type>
+
+        <!-- User Interface -->
+        <Type name="ui" profile="standard">
+            <DetectionConfidence>0.95</DetectionConfidence>
+            <Features>
+                <Feature name="launcher_app" weight="1.0">
+                    <DetectionMethod>app_package</DetectionMethod>
+                </Feature>
+                <Feature name="static_elements" weight="0.9">
+                    <MotionIntensity>0</MotionIntensity>
+                </Feature>
+                <Feature name="text_heavy" weight="0.7">
+                    <TextDetection>true</TextDetection>
+                </Feature>
+            </Features>
+            <HDRSettings>
+                <ToneMapping>none</ToneMapping>
+                <SDRMode>true</SDRMode>
+            </HDRSettings>
+        </Type>
+
+        <!-- Video Call -->
+        <Type name="video_call" profile="standard">
+            <DetectionConfidence>0.85</DetectionConfidence>
+            <Features>
+                <Feature name="video_call_app" weight="0.95">
+                    <DetectionMethod>app_package</DetectionMethod>
+                </Feature>
+                <Feature name="face_detection" weight="0.8">
+                    <FaceCount>1-4</FaceCount>
+                </Feature>
+                <Feature name="low_bitrate" weight="0.6">
+                    <CompressionArtifacts>moderate</CompressionArtifacts>
+                </Feature>
+            </Features>
+            <HDRSettings>
+                <ToneMapping>balanced</ToneMapping>
+                <SkinToneProtection>true</SkinToneProtection>
+                <NoiseReduction>auto</NoiseReduction>
+            </HDRSettings>
+        </Type>
+    </ContentTypes>
+
+    <!-- App-Specific Detection -->
+    <AppDetection>
+        <!-- Video Streaming Apps -->
+        <AppCategory name="streaming">
+            <Packages>
+                <Package>com.netflix.mediaclient</Package>
+                <Package>com.disney.disneyplus</Package>
+                <Package>com.amazon.avod.thirdpartyclient</Package>
+                <Package>com.hbo.max</Package>
+                <Package>com.google.android.youtube</Package>
+                <Package>com.plexapp.android</Package>
+            </Packages>
+            <DefaultProfile>cinema</DefaultProfile>
+            <ContentDetectionEnabled>true</ContentDetectionEnabled>
+        </AppCategory>
+
+        <!-- Gaming Apps -->
+        <AppCategory name="gaming">
+            <DetectionMethod>game_mode_api</DetectionMethod>
+            <DefaultProfile>game</DefaultProfile>
+            <LowLatencyMode>true</LowLatencyMode>
+        </AppCategory>
+
+        <!-- Gallery/Photo Apps -->
+        <AppCategory name="gallery">
+            <Packages>
+                <Package>com.google.android.apps.photos</Package>
+                <Package>com.android.gallery3d</Package>
+                <Package>com.lineageos.snap</Package>
+            </Packages>
+            <DefaultProfile>photo</DefaultProfile>
+        </AppCategory>
+
+        <!-- Social Media Apps -->
+        <AppCategory name="social">
+            <Packages>
+                <Package>com.instagram.android</Package>
+                <Package>com.zhiliaoapp.musically</Package>
+                <Package>com.twitter.android</Package>
+            </Packages>
+            <DefaultProfile>vivid</DefaultProfile>
+            <ContentDetectionEnabled>true</ContentDetectionEnabled>
+        </AppCategory>
+
+        <!-- Video Call Apps -->
+        <AppCategory name="video_call">
+            <Packages>
+                <Package>com.google.android.apps.meetings</Package>
+                <Package>com.microsoft.teams</Package>
+                <Package>com.zoom.us</Package>
+                <Package>com.whatsapp</Package>
+                <Package>com.telegram.messenger</Package>
+            </Packages>
+            <DefaultProfile>standard</DefaultProfile>
+            <SkinToneProtection>true</SkinToneProtection>
+        </AppCategory>
+    </AppDetection>
+
+    <!-- Scene Change Detection -->
+    <SceneChangeDetection>
+        <Enabled>true</Enabled>
+        <Method>hybrid</Method>
+        <Threshold>0.3</Threshold>
+        <MinSceneDuration>100</MinSceneDuration>
+        
+        <!-- Histogram-based detection -->
+        <HistogramMethod>
+            <Enabled>true</Enabled>
+            <Bins>64</Bins>
+            <Metric>chi_square</Metric>
+            <Threshold>0.25</Threshold>
+        </HistogramMethod>
+
+        <!-- Edge-based detection -->
+        <EdgeMethod>
+            <Enabled>true</Enabled>
+            <EdgeChangeThreshold>0.4</EdgeChangeThreshold>
+        </EdgeMethod>
+
+        <!-- Motion-based detection -->
+        <MotionMethod>
+            <Enabled>true</Enabled>
+            <MotionThreshold>0.5</MotionThreshold>
+        </MotionMethod>
+
+        <!-- Adaptation speed after scene change -->
+        <AdaptationSpeed>
+            <Initial>0.8</Initial>
+            <Normal>0.3</Normal>
+            <TransitionDuration>500</TransitionDuration>
+        </AdaptationSpeed>
+    </SceneChangeDetection>
+
+    <!-- Ambient Light Integration -->
+    <AmbientLightIntegration>
+        <Enabled>true</Enabled>
+        <AdaptationMode>content_aware</AdaptationMode>
+        
+        <!-- Brightness adaptation -->
+        <BrightnessAdaptation>
+            <Enabled>true</Enabled>
+            <ResponseTime>500</ResponseTime>
+            <ContentAware>true</ContentAware>
+        </BrightnessAdaptation>
+
+        <!-- Color temperature adaptation -->
+        <ColorTemperatureAdaptation>
+            <Enabled>true</Enabled>
+            <Range>4500-7500</Range>
+            <ContentProtection>true</ContentProtection>
+        </ColorTemperatureAdaptation>
+    </AmbientLightIntegration>
+
+    <!-- Performance Optimization -->
+    <PerformanceOptimization>
+        <FrameSkipping>true</FrameSkipping>
+        <SkipInterval>10</SkipInterval>
+        <CacheResults>true</CacheResults>
+        <CacheDuration>5000</CacheDuration>
+        <GPUAcceleration>true</GPUAcceleration>
+        <MaxProcessingTime>16</MaxProcessingTime>
+    </PerformanceOptimization>
+</ContentDetection>

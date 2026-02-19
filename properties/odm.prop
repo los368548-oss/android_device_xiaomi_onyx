@@ -48,6 +48,10 @@ vendor.audio.support.16bit.record=true
 # Battery secret
 persist.vendor.region.charger=default
 
+# Charging
+ro.vendor.charger.detected=90w
+persist.vendor.charger_type=90w
+
 # Bluetooth
 ro.bluetooth.finder.supported=true
 

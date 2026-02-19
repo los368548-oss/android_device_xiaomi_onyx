@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2024 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="app_title">Xiaomi Parts</string>
+    <string name="made_by">Made by phhgsi</string>
+    <string name="version_info">Version 2.0 | Glassmorphism Edition</string>
+    
+    <string name="about_category">About</string>
+    <string name="about_title">About Xiaomi Parts</string>
+    <string name="about_summary">Advanced device configuration tool</string>
+    <string name="credits_title">Credits</string>
+    <string name="credits_summary">Made with love by phhgsi</string>
+
+    <!-- Dolby Atmos -->
+    <string name="dolby_atmos_title">Dolby Atmos</string>
+    <string name="dolby_atmos_summary">Configure Dolby Atmos audio settings</string>
+    <string name="dolby_atmos_enable_title">Enable Dolby Atmos</string>
+    <string name="dolby_atmos_enable_summary">Enable immersive 3D surround sound experience</string>
+    
+    <!-- Categories -->
+    <string name="dolby_category_profile">Audio Profile</string>
+    <string name="dolby_category_spatial">Spatial Audio</string>
+    <string name="dolby_category_dialogue">Dialogue Enhancement</string>
+    <string name="dolby_category_bass">Bass Enhancement</string>
+    <string name="dolby_category_treble">Treble &amp; Clarity</string>
+    <string name="dolby_category_volume">Volume Control</string>
+    <string name="dolby_category_surround">Surround Virtualizer</string>
+    <string name="dolby_category_equalizer">Intelligent Equalizer</string>
+    <string name="dolby_category_device">Output Device</string>
+    <string name="dolby_category_advanced">Advanced Settings</string>
+    
+    <!-- Profile -->
+    <string name="dolby_profile_title">Audio Profile</string>
+    <string name="dolby_profile_summary">Select audio profile for current content</string>
+    <string name="dolby_profile_auto">Auto</string>
+    <string name="dolby_profile_movie">Movie</string>
+    <string name="dolby_profile_music">Music</string>
+    <string name="dolby_profile_game">Game</string>
+    <string name="dolby_profile_voice">Voice</string>
+    <string name="dolby_profile_podcast">Podcast</string>
+    <string name="dolby_profile_custom">Custom</string>
+    <string name="dolby_profile_audiophile">Audiophile</string>
+    <string name="dolby_profile_immersive">Immersive</string>
+    
+    <!-- Spatial Audio -->
+    <string name="dolby_spatial_audio_title">Spatial Audio</string>
+    <string name="dolby_spatial_audio_summary">Enable 3D spatial audio rendering</string>
+    <string name="dolby_spatial_width_title">Spatial Width</string>
+    <string name="dolby_spatial_width_summary">Adjust the width of the soundstage</string>
+    <string name="dolby_spatial_depth_title">Spatial Depth</string>
+    <string name="dolby_spatial_depth_summary">Adjust the perceived depth of sound</string>
+    <string name="dolby_spatial_height_title">Spatial Height</string>
+    <string name="dolby_spatial_height_summary">Adjust the height dimension of spatial audio</string>
+    
+    <!-- Dialogue -->
+    <string name="dolby_dialogue_enhancer_title">Dialogue Enhancer</string>
+    <string name="dolby_dialogue_enhancer_summary">Enhance dialogue clarity for better voice reproduction</string>
+    <string name="dolby_dialogue_boost_title">Dialogue Boost</string>
+    <string name="dolby_dialogue_boost_summary">Boost dialogue volume level</string>
+    <string name="dolby_voice_isolation_title">Voice Isolation</string>
+    <string name="dolby_voice_isolation_summary">Isolate and enhance voice frequencies</string>
+    
+    <!-- Bass -->
+    <string name="dolby_bass_enhancer_title">Bass Enhancer</string>
+    <string name="dolby_bass_enhancer_summary">Enhance bass frequencies for richer low-end</string>
+    <string name="dolby_bass_boost_title">Bass Boost</string>
+    <string name="dolby_sub_bass_title">Sub-Bass Enhancement</string>
+    
+    <!-- Treble & Clarity -->
+    <string name="dolby_treble_boost_title">Treble Boost</string>
+    <string name="dolby_clarity_enhancer_title">Clarity Enhancer</string>
+    <string name="dolby_clarity_enhancer_summary">Enhance overall audio clarity and detail</string>
+    
+    <!-- Volume -->
+    <string name="dolby_volume_leveler_title">Volume Leveler</string>
+    <string name="dolby_volume_leveler_summary">Maintain consistent volume across different content</string>
+    <string name="dolby_volume_level_title">Volume Leveler Amount</string>
+    <string name="dolby_peak_limiter_title">Peak Limiter</string>
+    <string name="dolby_peak_limiter_summary">Prevent audio clipping and distortion</string>
+    
+    <!-- Surround -->
+    <string name="dolby_surround_virtualizer_title">Surround Virtualizer</string>
+    <string name="dolby_surround_virtualizer_summary">Create immersive surround sound experience</string>
+    <string name="dolby_surround_mode_title">Surround Mode</string>
+    <string name="dolby_surround_mode_studio">Studio Reference</string>
+    <string name="dolby_surround_mode_movie">Movie Theater</string>
+    <string name="dolby_surround_mode_music">Music Hall</string>
+    <string name="dolby_surround_mode_game">Gaming Arena</string>
+    <string name="dolby_surround_mode_atmos">Dolby Atmos</string>
+    
+    <!-- Equalizer -->
+    <string name="dolby_equalizer_title">Intelligent Equalizer</string>
+    <string name="dolby_equalizer_summary">Adaptive equalization for optimal sound</string>
+    <string name="dolby_adaptive_eq_title">Adaptive EQ</string>
+    <string name="dolby_adaptive_eq_summary">Automatically adjust EQ based on content</string>
+    <string name="dolby_eq_preset_title">EQ Preset</string>
+    <string name="dolby_eq_flat">Flat</string>
+    <string name="dolby_eq_bass_boost">Bass Boost</string>
+    <string name="dolby_eq_treble_boost">Treble Boost</string>
+    <string name="dolby_eq_vocal">Vocal</string>
+    <string name="dolby_eq_electronic">Electronic</string>
+    <string name="dolby_eq_rock">Rock</string>
+    <string name="dolby_eq_jazz">Jazz</string>
+    <string name="dolby_eq_classical">Classical</string>
+    <string name="dolby_eq_pop">Pop</string>
+    
+    <!-- Device -->
+    <string name="dolby_output_device_title">Output Device</string>
+    <string name="dolby_device_speaker">Speaker</string>
+    <string name="dolby_device_headphone">Headphone</string>
+    <string name="dolby_device_bluetooth">Bluetooth</string>
+    <string name="dolby_device_usb">USB Audio</string>
+    <string name="dolby_device_hdmi">HDMI</string>
+    <string name="dolby_device_all">All Devices</string>
+    
+    <!-- Advanced -->
+    <string name="dolby_intelligent_volume_title">Intelligent Volume</string>
+    <string name="dolby_intelligent_volume_summary">AI-powered volume adjustment</string>
+    <string name="dolby_geometric_processing_title">Geometric Processing</string>
+    <string name="dolby_geometric_processing_summary">Advanced 3D audio geometry processing</string>
+    <string name="dolby_head_tracking_title">Head Tracking</string>
+    <string name="dolby_head_tracking_summary">Adjust audio based on head movement (requires supported headphones)</string>
+    <string name="dolby_low_latency_title">Low Latency Mode</string>
+    <string name="dolby_low_latency_summary">Reduce audio processing delay for gaming</string>
+    
+    <!-- Reset -->
+    <string name="dolby_reset_title">Reset to Default</string>
+    <string name="dolby_reset_summary">Reset all Dolby Atmos settings to default values</string>
+    <string name="dolby_reset_confirm">Reset Dolby Atmos settings?</string>
+    <string name="dolby_reset_done">Dolby Atmos settings reset to default</string>
+    
+    <!-- Toast messages -->
+    <string name="toast_dolby_on">Dolby Atmos enabled</string>
+    <string name="toast_dolby_off">Dolby Atmos disabled</string>
+
+    <!-- Dolby Vision -->
+    <string name="dolby_vision_title">Dolby Vision</string>
+    <string name="dolby_vision_summary">Configure Dolby Vision HDR display settings</string>
+    <string name="dolby_vision_enable_title">Enable Dolby Vision</string>
+    <string name="dolby_vision_enable_summary">Enable HDR display with Dolby Vision technology</string>
+    
+    <!-- DV Categories -->
+    <string name="dv_category_profile">Display Profile</string>
+    <string name="dv_category_tone_mapping">Tone Mapping</string>
+    <string name="dv_category_color">Color Enhancement</string>
+    <string name="dv_category_motion">Motion Processing</string>
+    <string name="dv_category_advanced">Advanced Display</string>
+    
+    <string name="dv_profile_title">Display Profile</string>
+    <string name="dv_profile_summary">Select display profile for optimal viewing experience</string>
+    <string name="dv_profile_cinema">Cinema</string>
+    <string name="dv_profile_vivid">Vivid</string>
+    <string name="dv_profile_standard">Standard</string>
+    <string name="dv_profile_game">Game</string>
+    <string name="dv_profile_photo">Photo</string>
+    <string name="dv_profile_sports">Sports</string>
+    <string name="dv_profile_reading">Reading</string>
+    <string name="dv_profile_outdoor">Outdoor</string>
+    
+    <!-- DV Tone Mapping -->
+    <string name="dv_content_detection_title">Content Detection</string>
+    <string name="dv_content_detection_summary">Automatically optimize display based on content type</string>
+    <string name="dv_tone_mapping_title">Adaptive Tone Mapping</string>
+    <string name="dv_tone_mapping_summary">Dynamically adjust tone mapping for ambient light</string>
+    <string name="dv_dynamic_metadata_title">Dynamic Metadata</string>
+    <string name="dv_dynamic_metadata_summary">Use dynamic HDR metadata for optimal picture</string>
+    <string name="dv_ambient_adaptation_title">Ambient Light Adaptation</string>
+    <string name="dv_ambient_adaptation_summary">Adjust display based on ambient lighting conditions</string>
+    <string name="dv_highlight_recovery_title">Highlight Recovery</string>
+    <string name="dv_highlight_recovery_summary">Recover details in bright areas</string>
+    <string name="dv_shadow_enhancement_title">Shadow Enhancement</string>
+    <string name="dv_shadow_enhancement_summary">Enhance details in dark areas</string>
+    
+    <!-- DV Color -->
+    <string name="dv_color_enhancement_title">Color Enhancement</string>
+    <string name="dv_color_enhancement_summary">Enhance color vibrancy and accuracy</string>
+    <string name="dv_color_saturation_title">Color Saturation</string>
+    <string name="dv_color_gamut_title">Color Gamut</string>
+    <string name="dv_gamut_auto">Auto</string>
+    <string name="dv_gamut_dcip3">DCI-P3</string>
+    <string name="dv_gamut_srgb">sRGB</string>
+    <string name="dv_gamut_adobe">Adobe RGB</string>
+    <string name="dv_skin_tone_title">Skin Tone Protection</string>
+    <string name="dv_skin_tone_summary">Maintain natural skin tone colors</string>
+    <string name="dv_memory_color_title">Memory Color Protection</string>
+    <string name="dv_memory_color_summary">Protect memory colors (sky, grass, skin) from distortion</string>
+    
+    <!-- DV Motion -->
+    <string name="dv_motion_interpolation_title">Motion Interpolation</string>
+    <string name="dv_motion_interpolation_summary">Reduce motion blur and judder</string>
+    <string name="dv_motion_blur_reduction_title">Motion Blur Reduction</string>
+    <string name="dv_motion_blur_reduction_summary">Reduce blur during fast motion scenes</string>
+    <string name="dv_judder_reduction_title">Judder Reduction</string>
+    <string name="dv_judder_reduction_summary">Smooth out frame rate inconsistencies</string>
+    <string name="dv_black_frame_insertion_title">Black Frame Insertion</string>
+    <string name="dv_black_frame_insertion_summary">Insert black frames to reduce motion blur</string>
+    
+    <!-- DV Advanced -->
+    <string name="dv_low_latency_title">Low Latency Mode</string>
+    <string name="dv_low_latency_summary">Reduce display processing delay for gaming</string>
+    <string name="dv_vrr_title">Variable Refresh Rate</string>
+    <string name="dv_vrr_summary">Enable adaptive refresh rate for smoother visuals</string>
+    <string name="dv_hdr10_plus_title">HDR10+ Support</string>
+    <string name="dv_hdr10_plus_summary">Enable HDR10+ dynamic metadata support</string>
+    <string name="dv_hlg_title">HLG Support</string>
+    <string name="dv_hlg_summary">Enable Hybrid Log-Gamma HDR support</string>
+    <string name="dv_peak_brightness_title">Peak Brightness</string>
+    <string name="dv_peak_brightness_summary">Maximum HDR peak brightness level</string>
+    <string name="dv_brightness_1000">1000 nits</string>
+    <string name="dv_brightness_1500">1500 nits</string>
+    <string name="dv_brightness_2000">2000 nits</string>
+    <string name="dv_brightness_2500">2500 nits</string>
+    <string name="dv_brightness_3000">3000 nits</string>
+    
+    <!-- DV Reset -->
+    <string name="dv_reset_title">Reset to Default</string>
+    <string name="dv_reset_summary">Reset all Dolby Vision settings to default values</string>
+    <string name="dv_reset_confirm">Reset Dolby Vision settings?</string>
+    <string name="dv_reset_done">Dolby Vision settings reset to default</string>
+    
+    <!-- DV Toast -->
+    <string name="toast_dv_on">Dolby Vision enabled</string>
+    <string name="toast_dv_off">Dolby Vision disabled</string>
+
+    <!-- Turbo Charging -->
+    <string name="turbo_charge_title">Turbo Charging</string>
+    <string name="turbo_charge_summary">Configure fast charging settings</string>
+    <string name="turbo_enable_title">Enable Turbo Charging</string>
+    <string name="turbo_enable_summary">Enable fast charging with custom wattage</string>
+    <string name="sports_mode_title">Sports Mode</string>
+    <string name="sports_mode_summary">Maximum charging speed for quick top-ups</string>
+    <string name="turbo_current_title">Charging Wattage</string>
+    
+    <!-- TC Categories -->
+    <string name="tc_category_basic">Basic Settings</string>
+    <string name="tc_category_schedule">Charging Schedule</string>
+    <string name="tc_category_protection">Battery Protection</string>
+    <string name="tc_category_advanced">Advanced Options</string>
+    
+    <!-- TC Schedule -->
+    <string name="tc_schedule_title">Charging Schedule</string>
+    <string name="tc_schedule_summary">Set charging time windows</string>
+    <string name="tc_start_time_title">Start Time</string>
+    <string name="tc_end_time_title">End Time</string>
+    <string name="tc_adaptive_charging_title">Adaptive Charging</string>
+    <string name="tc_adaptive_charging_summary">Learn your charging habits and optimize</string>
+    
+    <!-- TC Protection -->
+    <string name="tc_bypass_charging_title">Bypass Charging</string>
+    <string name="tc_bypass_charging_summary">Power device directly without charging battery during gaming</string>
+    <string name="tc_temp_protection_title">Temperature Protection</string>
+    <string name="tc_temp_protection_summary">Reduce charging speed if battery gets hot</string>
+    <string name="tc_night_charge_title">Night Charging Mode</string>
+    <string name="tc_night_charge_summary">Slower charging during night for battery health</string>
+    <string name="tc_battery_protection_title">Battery Health Protection</string>
+    <string name="tc_battery_protection_summary">Limit charge to 80% for extended battery lifespan</string>
+    <string name="tc_charge_limit_title">Charge Limit</string>
+    <string name="tc_charge_limit_summary">Stop charging at specified percentage</string>
+    
+    <!-- TC Advanced -->
+    <string name="tc_usb_pd_title">USB PD Profile</string>
+    <string name="tc_usb_pd_summary">Select USB Power Delivery profile</string>
+    <string name="tc_pd_auto">Auto</string>
+    <string name="tc_pd_standard">Standard</string>
+    <string name="tc_pd_high_speed">High Speed</string>
+    <string name="tc_quick_charge_title">Quick Charge Support</string>
+    <string name="tc_quick_charge_summary">Enable Qualcomm Quick Charge support</string>
+    <string name="tc_charge_monitor_title">Charge Monitor</string>
+    <string name="tc_charge_monitor_summary">Show detailed charging information</string>
+    <string name="tc_real_time_current_title">Real-time Current</string>
+    <string name="tc_real_time_current_summary">Display real-time charging current</string>
+    <string name="tc_charge_cycles_title">Battery Cycles</string>
+    <string name="tc_charge_cycles_summary">View battery charge cycle count</string>
+    
+    <!-- TC Reset -->
+    <string name="tc_reset_title">Reset to Default</string>
+    <string name="tc_reset_summary">Reset all charging settings to default</string>
+    <string name="tc_reset_confirm">Reset Turbo Charging settings?</string>
+    <string name="tc_reset_done">Turbo Charging settings reset to default</string>
+    
+    <!-- TC Toast -->
+    <string name="toast_turbo_on">Turbo Charging turned ON</string>
+    <string name="toast_turbo_off">Turbo Charging turned OFF</string>
+    <string name="toast_sports_on">Sports Mode turned ON</string>
+    <string name="toast_sports_off">Sports Mode turned OFF</string>
+    <string name="toast_wattage_set">Charging wattage set to %s</string>
+    <string name="toast_bypass_on">Bypass Charging enabled</string>
+    <string name="toast_bypass_off">Bypass Charging disabled</string>
+    <string name="toast_protection_on">Battery protection enabled (80% limit)</string>
+    <string name="toast_protection_off">Battery protection disabled</string>
+</resources>

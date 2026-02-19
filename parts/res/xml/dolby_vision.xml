@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2024 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res-auto"
+    android:title="@string/dolby_vision_title">
+
+    <com.android.settingslib.widget.MainSwitchPreference
+        android:key="dolby_vision_enabled"
+        android:title="@string/dolby_vision_enable_title"
+        android:summary="@string/dolby_vision_enable_summary"
+        android:defaultValue="true" />
+
+    <PreferenceCategory
+        android:key="dv_profile_category"
+        android:title="@string/dv_category_profile">
+
+        <ListPreference
+            android:key="dv_profile"
+            android:title="@string/dv_profile_title"
+            android:summary="@string/dv_profile_summary"
+            android:entries="@array/dv_profile_entries"
+            android:entryValues="@array/dv_profile_values"
+            android:defaultValue="cinema" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="dv_tone_mapping_category"
+        android:title="@string/dv_category_tone_mapping">
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="dv_content_detection"
+            android:title="@string/dv_content_detection_title"
+            android:summary="@string/dv_content_detection_summary"
+            android:defaultValue="true" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="dv_tone_mapping"
+            android:title="@string/dv_tone_mapping_title"
+            android:summary="@string/dv_tone_mapping_summary"
+            android:defaultValue="true" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="dv_dynamic_metadata"
+            android:title="@string/dv_dynamic_metadata_title"
+            android:summary="@string/dv_dynamic_metadata_summary"
+            android:defaultValue="true" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="dv_ambient_adaptation"
+            android:title="@string/dv_ambient_adaptation_title"
+            android:summary="@string/dv_ambient_adaptation_summary"
+            android:defaultValue="true" />
+
+        <org.lineageos.settings.CustomSeekBarPreference
+            android:key="dv_highlight_recovery"
+            android:title="@string/dv_highlight_recovery_title"
+            android:max="100"
+            android:min="0"
+            settings:units="%"
+            android:defaultValue="50" />
+
+        <org.lineageos.settings.CustomSeekBarPreference
+            android:key="dv_shadow_enhancement"
+            android:title="@string/dv_shadow_enhancement_title"
+            android:max="100"
+            android:min="0"
+            settings:units="%"
+            android:defaultValue="50" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="dv_color_category"
+        android:title="@string/dv_category_color">
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="dv_color_enhancement"
+            android:title="@string/dv_color_enhancement_title"
+            android:summary="@string/dv_color_enhancement_summary"
+            android:defaultValue="true" />
+
+        <org.lineageos.settings.CustomSeekBarPreference
+            android:key="dv_color_saturation"
+            android:title="@string/dv_color_saturation_title"
+            android:max="100"
+            android:min="0"
+            settings:units="%"
+            android:defaultValue="50" />
+
+        <ListPreference
+            android:key="dv_color_gamut"
+            android:title="@string/dv_color_gamut_title"
+            android:entries="@array/dv_color_gamut_entries"
+            android:entryValues="@array/dv_color_gamut_values"
+            android:defaultValue="auto" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="dv_skin_tone"
+            android:title="@string/dv_skin_tone_title"
+            android:summary="@string/dv_skin_tone_summary"
+            android:defaultValue="true" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="dv_memory_color"
+            android:title="@string/dv_memory_color_title"
+            android:summary="@string/dv_memory_color_summary"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="dv_motion_category"
+        android:title="@string/dv_category_motion">
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="dv_motion_interpolation"
+            android:title="@string/dv_motion_interpolation_title"
+            android:summary="@string/dv_motion_interpolation_summary"
+            android:defaultValue="false" />
+
+        <org.lineageos.settings.CustomSeekBarPreference
+            android:key="dv_motion_blur_reduction"
+            android:title="@string/dv_motion_blur_reduction_title"
+            android:max="100"
+            android:min="0"
+            settings:units="%"
+            android:defaultValue="30" />
+
+        <org.lineageos.settings.CustomSeekBarPreference
+            android:key="dv_judder_reduction"
+            android:title="@string/dv_judder_reduction_title"
+            android:max="100"
+            android:min="0"
+            settings:units="%"
+            android:defaultValue="30" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="dv_black_frame_insertion"
+            android:title="@string/dv_black_frame_insertion_title"
+            android:summary="@string/dv_black_frame_insertion_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="dv_advanced_category"
+        android:title="@string/dv_category_advanced">
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="dv_low_latency"
+            android:title="@string/dv_low_latency_title"
+            android:summary="@string/dv_low_latency_summary"
+            android:defaultValue="false" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="dv_vrr"
+            android:title="@string/dv_vrr_title"
+            android:summary="@string/dv_vrr_summary"
+            android:defaultValue="true" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="dv_hdr10_plus"
+            android:title="@string/dv_hdr10_plus_title"
+            android:summary="@string/dv_hdr10_plus_summary"
+            android:defaultValue="true" />
+
+        <androidx.preference.SwitchPreferenceCompat
+            android:key="dv_hlg"
+            android:title="@string/dv_hlg_title"
+            android:summary="@string/dv_hlg_summary"
+            android:defaultValue="true" />
+
+        <ListPreference
+            android:key="dv_peak_brightness"
+            android:title="@string/dv_peak_brightness_title"
+            android:summary="@string/dv_peak_brightness_summary"
+            android:entries="@array/dv_peak_brightness_entries"
+            android:entryValues="@array/dv_peak_brightness_values"
+            android:defaultValue="2000" />
+
+    </PreferenceCategory>
+
+    <Preference
+        android:key="dv_reset"
+        android:title="@string/dv_reset_title"
+        android:summary="@string/dv_reset_summary" />
+
+    <Preference
+        android:key="dv_about"
+        android:title="@string/about_title"
+        android:selectable="false" />
+
+</PreferenceScreen>

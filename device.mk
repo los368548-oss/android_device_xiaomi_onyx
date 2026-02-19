@@ -43,6 +43,10 @@ PRODUCT_PACKAGES += \
 BOARD_SHIPPING_API_LEVEL := 202404
 PRODUCT_SHIPPING_API_LEVEL := 35
 
+# Xiaomi Parts
+PRODUCT_PACKAGES += \
+    XiaomiParts
+
 # Audio
 PRODUCT_PACKAGES += \
     audio.bluetooth.default \
@@ -101,6 +105,45 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.audio.pro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.pro.xml \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml
+
+# Dolby Vision
+PRODUCT_PACKAGES += \
+    dolby_vision_config \
+    hdr_tone_mapping_config \
+    display_profile_config \
+    color_volume_lut \
+    hdr_metadata_config \
+    content_detection_config
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/dolby_vision/dolby_vision_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby_vision/dolby_vision_config.xml \
+    $(LOCAL_PATH)/configs/dolby_vision/hdr_tone_mapping.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby_vision/hdr_tone_mapping.xml \
+    $(LOCAL_PATH)/configs/dolby_vision/display_profile.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby_vision/display_profile.xml \
+    $(LOCAL_PATH)/configs/dolby_vision/color_volume_lut.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby_vision/color_volume_lut.xml \
+    $(LOCAL_PATH)/configs/dolby_vision/hdr_metadata.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby_vision/hdr_metadata.xml \
+    $(LOCAL_PATH)/configs/dolby_vision/content_detection.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby_vision/content_detection.xml
+
+# Dolby Vision Properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.dolby.vision.enabled=true \
+    ro.vendor.dolby.vision.support=true \
+    persist.vendor.dolby.vision.enabled=true \
+    persist.vendor.dolby.vision.support=true \
+    ro.vendor.display.hdr.enabled=true \
+    ro.vendor.display.hdr.support=true \
+    ro.vendor.display.dolby_vision.profile=cinema \
+    persist.vendor.display.hdr.mode=auto \
+    vendor.display.hdr.capability=dolby_vision,hdr10,hdr10plus,hlg \
+    vendor.display.hdr peak_brightness=2000 \
+    vendor.display.hdr.color_gamut=DCI-P3 \
+    vendor.display.hdr.tone_mapping=adaptive \
+    vendor.display.hdr.gamut_mapping=perceptual \
+    vendor.display.hdr.content_adaptive=true \
+    vendor.display.hdr.ambient_adaptation=true \
+    vendor.display.hdr.skin_tone_protection=true \
+    vendor.display.hdr.memory_color_protection=true \
+    vendor.display.hdr.low_latency_mode=true \
+    vendor.display.hdr.vrr_support=true
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -301,6 +344,7 @@ PRODUCT_PACKAGES += \
     SystemUIOverlayOnyx \
     TelephonyOverlayOnyx \
     FastChargeOnyx \
+    TurboChargeOverlayOnyx \
     FrameworkOverlayOnyx \
     FrameworkOverlayOnyxGL \
     LineageDialerOverlayOnyx \

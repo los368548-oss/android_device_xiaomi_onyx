@@ -1,0 +1,81 @@
+// Copyright (C) 2024 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+
+// Main Dolby Vision Configuration
+prebuilt_etc {
+    name: "dolby_vision_config",
+    src: "dolby_vision_config.xml",
+    sub_dir: "dolby_vision",
+    vendor: true,
+}
+
+// HDR Tone Mapping Configuration
+prebuilt_etc {
+    name: "hdr_tone_mapping_config",
+    src: "hdr_tone_mapping.xml",
+    sub_dir: "dolby_vision",
+    vendor: true,
+}
+
+// Display Profile Configuration
+prebuilt_etc {
+    name: "display_profile_config",
+    src: "display_profile.xml",
+    sub_dir: "dolby_vision",
+    vendor: true,
+}
+
+// Color Volume LUT (3D LUT for color mapping)
+prebuilt_etc {
+    name: "color_volume_lut",
+    src: "color_volume_lut.xml",
+    sub_dir: "dolby_vision",
+    vendor: true,
+}
+
+// HDR Metadata Processing Configuration
+prebuilt_etc {
+    name: "hdr_metadata_config",
+    src: "hdr_metadata.xml",
+    sub_dir: "dolby_vision",
+    vendor: true,
+}
+
+// Content Detection Configuration
+prebuilt_etc {
+    name: "content_detection_config",
+    src: "content_detection.xml",
+    sub_dir: "dolby_vision",
+    vendor: true,
+}
+
+// Advanced Processing Algorithms Configuration
+prebuilt_etc {
+    name: "advanced_processing_config",
+    src: "advanced_processing.xml",
+    sub_dir: "dolby_vision",
+    vendor: true,
+}
+
+// Intelligent Algorithms Configuration
+prebuilt_etc {
+    name: "intelligent_algorithms_config",
+    src: "intelligent_algorithms.xml",
+    sub_dir: "dolby_vision",
+    vendor: true,
+}
+
+// Group all Dolby Vision configs
+phony {
+    name: "dolby_vision_configs",
+    required: [
+        "dolby_vision_config",
+        "hdr_tone_mapping_config",
+        "display_profile_config",
+        "color_volume_lut",
+        "hdr_metadata_config",
+        "content_detection_config",
+        "advanced_processing_config",
+        "intelligent_algorithms_config",
+    ],
+}

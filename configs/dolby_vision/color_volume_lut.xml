@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Color Volume LUT Configuration for Xiaomi Onyx
+     3D LUT for HDR Color Volume Mapping
+     
+     Copyright (C) 2024 The LineageOS Project
+     Licensed under the Apache License, Version 2.0
+-->
+<ColorVolumeLUT version="2.0">
+    <!-- LUT Specifications -->
+    <Specifications>
+        <LUTType>3D</LUTType>
+        <Size>33</Size>
+        <Domain>
+            <InputMin>0.0</InputMin>
+            <InputMax>1.0</InputMax>
+            <OutputMin>0.0</OutputMin>
+            <OutputMax>1.0</OutputMax>
+        </Domain>
+        <Interpolation>trilinear</Interpolation>
+        <TetrahedralInterpolation>true</TetrahedralInterpolation>
+        <Precision>16</Precision>
+        <InputColorSpace>BT2020_PQ</InputColorSpace>
+        <OutputColorSpace>DCI_P3_sRGB</OutputColorSpace>
+    </Specifications>
+
+    <!-- LUT Generation Parameters -->
+    <GenerationParameters>
+        <!-- Source color volume (mastering display) -->
+        <SourceVolume>
+            <Primaries>
+                <Red x="0.708" y="0.292"/>
+                <Green x="0.170" y="0.797"/>
+                <Blue x="0.131" y="0.046"/>
+                <White x="0.3127" y="0.3290"/>
+            </Primaries>
+            <LuminanceRange>
+                <Min>0.0001</Min>
+                <Max>4000</Max>
+            </LuminanceRange>
+        </SourceVolume>
+
+        <!-- Target color volume (display) -->
+        <TargetVolume>
+            <Primaries>
+                <Red x="0.680" y="0.320"/>
+                <Green x="0.265" y="0.690"/>
+                <Blue x="0.150" y="0.060"/>
+                <White x="0.3127" y="0.3290"/>
+            </Primaries>
+            <LuminanceRange>
+                <Min>0.005</Min>
+                <Max>2000</Max>
+            </LuminanceRange>
+        </TargetVolume>
+
+        <!-- Gamut mapping method -->
+        <GamutMapping>
+            <Method>perceptual</Method>
+            <HuePreservation>0.95</HuePreservation>
+            <SaturationPreservation>0.90</SaturationPreservation>
+            <LightnessAdaptation>0.85</LightnessAdaptation>
+        </GamutMapping>
+
+        <!-- Tone mapping integration -->
+        <ToneMappingIntegration>
+            <Method>hybrid</Method>
+            <GlobalWeight>0.6</GlobalWeight>
+            <LocalWeight>0.4</LocalWeight>
+            <HighlightHandling>soft_clip</HighlightHandling>
+            <ShadowHandling>lift</ShadowHandling>
+        </ToneMappingIntegration>
+    </GenerationParameters>
+
+    <!-- 3D LUT Data Structure (simplified representation) -->
+    <LUTData>
+        <!-- The actual LUT would be a binary file or computed at runtime -->
+        <!-- This defines the structure and key points -->
+        
+        <!-- Neutral axis (grayscale) -->
+        <NeutralAxis>
+            <!-- R=G=B values through the LUT -->
+            <Point input="0.0" output="0.0"/>
+            <Point input="0.1" output="0.08"/>
+            <Point input="0.2" output="0.18"/>
+            <Point input="0.3" output="0.29"/>
+            <Point input="0.4" output="0.40"/>
+            <Point input="0.5" output="0.52"/>
+            <Point input="0.6" output="0.64"/>
+            <Point input="0.7" output="0.76"/>
+            <Point input="0.8" output="0.87"/>
+            <Point input="0.9" output="0.95"/>
+            <Point input="1.0" output="1.0"/>
+        </NeutralAxis>
+
+        <!-- Primary color adjustments -->
+        <PrimaryAdjustments>
+            <Red>
+                <HueShift>0.0</HueShift>
+                <SaturationScale>1.0</SaturationScale>
+                <LightnessScale>1.0</LightnessScale>
+            </Red>
+            <Green>
+                <HueShift>0.0</HueShift>
+                <SaturationScale>1.0</SaturationScale>
+                <LightnessScale>1.0</LightnessScale>
+            </Green>
+            <Blue>
+                <HueShift>0.0</HueShift>
+                <SaturationScale>1.0</SaturationScale>
+                <LightnessScale>1.0</LightnessScale>
+            </Blue>
+        </PrimaryAdjustments>
+
+        <!-- Secondary color adjustments -->
+        <SecondaryAdjustments>
+            <Cyan>
+                <HueShift>0.0</HueShift>
+                <SaturationScale>1.0</SaturationScale>
+            </Cyan>
+            <Magenta>
+                <HueShift>0.0</HueShift>
+                <SaturationScale>1.0</SaturationScale>
+            </Magenta>
+            <Yellow>
+                <HueShift>0.0</HueShift>
+                <SaturationScale>1.0</SaturationScale>
+            </Yellow>
+        </SecondaryAdjustments>
+    </LUTData>
+
+    <!-- Skin Tone Protection -->
+    <SkinToneProtection>
+        <Enabled>true</Enabled>
+        <DetectionRange>
+            <!-- CIELAB skin tone range -->
+            <HueMin>20</HueMin>
+            <HueMax>50</HueMax>
+            <ChromaMin>10</ChromaMin>
+            <ChromaMax>35</ChromaMax>
+        </DetectionRange>
+        <ProtectionStrength>0.9</ProtectionStrength>
+        <HueLock>true</HueLock>
+        <SaturationPreservation>0.95</SaturationPreservation>
+    </SkinToneProtection>
+
+    <!-- Memory Color Handling -->
+    <MemoryColors>
+        <!-- Sky blue -->
+        <Color name="sky_blue">
+            <TargetHue>210</TargetHue>
+            <TargetChroma>30</TargetChroma>
+            <ProtectionStrength>0.8</ProtectionStrength>
+        </Color>
+        
+        <!-- Grass green -->
+        <Color name="grass_green">
+            <TargetHue>120</TargetHue>
+            <TargetChroma>40</TargetChroma>
+            <ProtectionStrength>0.7</ProtectionStrength>
+        </Color>
+        
+        <!-- Foliage green -->
+        <Color name="foliage_green">
+            <TargetHue>100</TargetHue>
+            <TargetChroma>25</TargetChroma>
+            <ProtectionStrength>0.6</ProtectionStrength>
+        </Color>
+    </MemoryColors>
+
+    <!-- Out-of-Gamut Handling -->
+    <OutOfGamutHandling>
+        <Method>soft_clipping</Method>
+        <SoftKnee>0.1</SoftKnee>
+        <PreserveHue>true</PreserveHue>
+        <DesaturationCurve>
+            <Point distance="0.0" saturation="1.0"/>
+            <Point distance="0.1" saturation="0.95"/>
+            <Point distance="0.2" saturation="0.85"/>
+            <Point distance="0.3" saturation="0.70"/>
+            <Point distance="0.5" saturation="0.50"/>
+            <Point distance="1.0" saturation="0.30"/>
+        </DesaturationCurve>
+    </OutOfGamutHandling>
+
+    <!-- LUT Caching -->
+    <Caching>
+        <Enabled>true</Enabled>
+        <CacheSize>4096</CacheSize>
+        <Compression>true</Compression>
+        <Precompute>true</Precompute>
+    </Caching>
+
+    <!-- Multiple LUT Support for Different Modes -->
+    <ModeSpecificLUTs>
+        <!-- Cinema LUT -->
+        <LUT name="cinema">
+            <GamutMapping>perceptual</GamutMapping>
+            <ToneMapping>adaptive_clipping</ToneMapping>
+            <ColorTemperature>6500</ColorTemperature>
+            <Saturation>1.0</Saturation>
+        </LUT>
+
+        <!-- Vivid LUT -->
+        <LUT name="vivid">
+            <GamutMapping>saturation</GamutMapping>
+            <ToneMapping>highlight_boost</ToneMapping>
+            <ColorTemperature>7000</ColorTemperature>
+            <Saturation>1.15</Saturation>
+        </LUT>
+
+        <!-- Standard LUT -->
+        <LUT name="standard">
+            <GamutMapping>relative_colorimetric</GamutMapping>
+            <ToneMapping>balanced</ToneMapping>
+            <ColorTemperature>6500</ColorTemperature>
+            <Saturation>1.0</Saturation>
+        </LUT>
+
+        <!-- Game LUT -->
+        <LUT name="game">
+            <GamutMapping>perceptual</GamutMapping>
+            <ToneMapping>low_latency</ToneMapping>
+            <ColorTemperature>7000</ColorTemperature>
+            <Saturation>1.1</Saturation>
+        </LUT>
+    </ModeSpecificLUTs>
+</ColorVolumeLUT>

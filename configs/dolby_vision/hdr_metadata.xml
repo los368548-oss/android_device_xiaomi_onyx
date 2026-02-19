@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     HDR Metadata Processing Configuration for Xiaomi Onyx
+     Dynamic Metadata and RPU Configuration
+     
+     Copyright (C) 2024 The LineageOS Project
+     Licensed under the Apache License, Version 2.0
+-->
+<HDRMetadata version="2.0">
+    <!-- Dolby Vision RPU Configuration -->
+    <DolbyVisionRPU>
+        <!-- RPU Version -->
+        <Version>4.0</Version>
+        
+        <!-- DM (Display Management) Configuration -->
+        <DMConfig>
+            <Version>2.9</Version>
+            <Mode>dynamic</Mode>
+            <ProcessingMode>realtime</ProcessingMode>
+        </DMConfig>
+
+        <!-- Level 1 Metadata (Global Statistics) -->
+        <L1Metadata>
+            <Description>Global luminance statistics for the frame</Description>
+            <Fields>
+                <Field name="min_pq">Minimum PQ code value in frame</Field>
+                <Field name="max_pq">Maximum PQ code value in frame</Field>
+                <Field name="avg_pq">Average PQ code value in frame</Field>
+            </Fields>
+            <Processing>
+                <HistogramBins>256</HistogramBins>
+                <PercentileLow>0.1</PercentileLow>
+                <PercentileHigh>99.9</PercentileHigh>
+            </Processing>
+        </L1Metadata>
+
+        <!-- Level 2 Metadata (Local Trim Passes) -->
+        <L2Metadata>
+            <Description>Local trim adjustments for different regions</Description>
+            <Enabled>true</Enabled>
+            <MaxPasses>8</MaxPasses>
+            <TrimMethod>smart</TrimMethod>
+            
+            <!-- Trim parameters per pass -->
+            <TrimPasses>
+                <Pass id="1">
+                    <Type>global</Type>
+                    <Adjustments>
+                        <Brightness>0.0</Brightness>
+                        <Contrast>1.0</Contrast>
+                        <Saturation>1.0</Saturation>
+                    </Adjustments>
+                </Pass>
+                <Pass id="2">
+                    <Type>highlights</Type>
+                    <Threshold>0.8</Threshold>
+                    <Adjustments>
+                        <Brightness>-0.1</Brightness>
+                        <Contrast>1.1</Contrast>
+                    </Adjustments>
+                </Pass>
+                <Pass id="3">
+                    <Type>shadows</Type>
+                    <Threshold>0.2</Threshold>
+                    <Adjustments>
+                        <Brightness>0.05</Brightness>
+                        <Contrast>0.95</Contrast>
+                    </Adjustments>
+                </Pass>
+            </TrimPasses>
+        </L2Metadata>
+
+        <!-- Level 3 Metadata (Color Saturation Mapping) -->
+        <L3Metadata>
+            <Description>Color saturation adjustments by luminance</Description>
+            <Enabled>true</Enabled>
+            <SaturationCurve>
+                <Point luminance="0.0" saturation="1.0"/>
+                <Point luminance="0.25" saturation="1.05"/>
+                <Point luminance="0.5" saturation="1.0"/>
+                <Point luminance="0.75" saturation="0.95"/>
+                <Point luminance="1.0" saturation="0.9"/>
+            </SaturationCurve>
+        </L3Metadata>
+
+        <!-- Level 4 Metadata (Color Weight) -->
+        <L4Metadata>
+            <Description>Color weight adjustments</Description>
+            <Enabled>true</Enabled>
+            <Weights>
+                <Red>1.0</Red>
+                <Green>1.0</Green>
+                <Blue>1.0</Blue>
+            </Weights>
+        </L4Metadata>
+
+        <!-- Level 5 Metadata (Active Area) -->
+        <L5Metadata>
+            <Description>Active area of the video frame</Description>
+            <ActiveArea>
+                <LeftOffset>0</LeftOffset>
+                <RightOffset>0</RightOffset>
+                <TopOffset>0</TopOffset>
+                <BottomOffset>0</BottomOffset>
+            </ActiveArea>
+            <AspectRatio>2.39</AspectRatio>
+        </L5Metadata>
+
+        <!-- Level 6 Metadata (Mastering Display) -->
+        <L6Metadata>
+            <Description>Mastering display color volume</Description>
+            <MasteringDisplayPrimaries>
+                <Red x="0.680" y="0.320"/>
+                <Green x="0.265" y="0.690"/>
+                <Blue x="0.150" y="0.060"/>
+                <White x="0.3127" y="0.3290"/>
+            </MasteringDisplayPrimaries>
+            <MasteringDisplayLuminance>
+                <Min>0.0001</Min>
+                <Max>4000</Max>
+            </MasteringDisplayLuminance>
+            <ContentLightLevel>
+                <MaxCLL>4000</MaxCLL>
+                <MaxFALL>2000</MaxFALL>
+            </ContentLightLevel>
+        </L6Metadata>
+
+        <!-- Level 8 Metadata (Trim Statistics) -->
+        <L8Metadata>
+            <Description>Trim statistics for target display</Description>
+            <Enabled>true</Enabled>
+            <TargetDisplay>
+                <PeakLuminance>2000</PeakLuminance>
+                <MinLuminance>0.005</MinLuminance>
+                <Primaries>
+                    <Red x="0.680" y="0.320"/>
+                    <Green x="0.265" y="0.690"/>
+                    <Blue x="0.150" y="0.060"/>
+                </Primaries>
+            </TargetDisplay>
+        </L8Metadata>
+
+        <!-- Level 9 Metadata (Source/Target Display) -->
+        <L9Metadata>
+            <Description>Source and target display mapping</Description>
+            <SourceDisplay>
+                <PeakLuminance>4000</PeakLuminance>
+                <ColorSpace>BT2020</ColorSpace>
+            </SourceDisplay>
+            <TargetDisplay>
+                <PeakLuminance>2000</PeakLuminance>
+                <ColorSpace>DCI-P3</ColorSpace>
+            </TargetDisplay>
+        </L9Metadata>
+
+        <!-- Level 10 Metadata (Target Display ID) -->
+        <L10Metadata>
+            <Description>Target display identification</Description>
+            <DisplayID>ONYX_AMOLED_144HZ</DisplayID>
+            <ManufactureDate>2024</ManufactureDate>
+        </L10Metadata>
+
+        <!-- Level 11 Metadata (Content Type) -->
+        <L11Metadata>
+            <Description>Content type flags</Description>
+            <ContentType>mixed</ContentType>
+            <WhitePoint>0</WhitePoint>
+            <NonConstantLuminance>true</NonConstantLuminance>
+            <DMMode>dynamic</DMMode>
+        </L11Metadata>
+
+        <!-- Level 254 Metadata (DM Data) -->
+        <L254Metadata>
+            <Description>Display management data block</Description>
+            <DMVersion>4</DMVersion>
+            <CMVersion>2</CMVersion>
+            <SceneCutDetection>true</SceneCutDetection>
+            <ProcessingMode>realtime</ProcessingMode>
+        </L254Metadata>
+    </DolbyVisionRPU>
+
+    <!-- HDR10+ Dynamic Metadata -->
+    <HDR10PlusMetadata>
+        <Enabled>true</Enabled>
+        <Version>1</Version>
+        
+        <!-- Scene-by-scene metadata -->
+        <SceneMetadata>
+            <Enabled>true</Enabled>
+            <ProcessingMode>realtime</ProcessingMode>
+            
+            <!-- Histogram analysis -->
+            <HistogramAnalysis>
+                <Bins>256</Bins>
+                <PercentileLow>1</PercentileLow>
+                <PercentileHigh>99</PercentileHigh>
+            </HistogramAnalysis>
+
+            <!-- Bezier curve parameters -->
+            <BezierCurve>
+                <AnchorPoints>
+                    <Point x="0.0" y="0.0"/>
+                    <Point x="0.25" y="0.28"/>
+                    <Point x="0.5" y="0.55"/>
+                    <Point x="0.75" y="0.80"/>
+                    <Point x="1.0" y="1.0"/>
+                </AnchorPoints>
+                <TargetLuminance>2000</TargetLuminance>
+            </BezierCurve>
+
+            <!-- Knee point adaptation -->
+            <KneeAdaptation>
+                <MinKneeX>0.5</MinKneeX>
+                <MaxKneeX>0.9</MaxKneeX>
+                <MinKneeY>0.5</MinKneeY>
+                <MaxKneeY>0.9</MaxKneeY>
+                <AdaptationSpeed>0.5</AdaptationSpeed>
+            </KneeAdaptation>
+        </SceneMetadata>
+
+        <!-- Target display configuration -->
+        <TargetDisplayConfig>
+            <PeakLuminance>2000</PeakLuminance>
+            <MinLuminance>0.005</MinLuminance>
+            <Gamut>DCI-P3</Gamut>
+        </TargetDisplayConfig>
+    </HDR10PlusMetadata>
+
+    <!-- HDR10 Static Metadata -->
+    <HDR10Metadata>
+        <Enabled>true</Enabled>
+        
+        <!-- Static metadata fields -->
+        <StaticMetadata>
+            <!-- Mastering display color volume -->
+            <MasteringDisplayPrimaries>
+                <Red x="0.680" y="0.320"/>
+                <Green x="0.265" y="0.690"/>
+                <Blue x="0.150" y="0.060"/>
+                <White x="0.3127" y="0.3290"/>
+            </MasteringDisplayPrimaries>
+            
+            <!-- Mastering display luminance -->
+            <MasteringDisplayLuminance>
+                <Min>0.0001</Min>
+                <Max>4000</Max>
+            </MasteringDisplayLuminance>
+            
+            <!-- Content light level -->
+            <ContentLightLevel>
+                <MaxCLL>4000</MaxCLL>
+                <MaxFALL>2000</MaxFALL>
+            </ContentLightLevel>
+        </StaticMetadata>
+
+        <!-- Tone mapping for static metadata -->
+        <StaticToneMapping>
+            <Method>adaptive</Method>
+            <KneePoint>0.75</KneePoint>
+            <ShoulderContrast>1.2</ShoulderContrast>
+            <HighlightRecovery>0.85</HighlightRecovery>
+        </StaticToneMapping>
+    </HDR10Metadata>
+
+    <!-- HLG Metadata -->
+    <HLGMetadata>
+        <Enabled>true</Enabled>
+        
+        <!-- HLG specific parameters -->
+        <HLGParams>
+            <ReferenceWhite>203</ReferenceWhite>
+            <SystemGamma>1.3</SystemGamma>
+            <OOTFEnabled>true</OOTFEnabled>
+        </HLGParams>
+
+        <!-- HLG to PQ conversion -->
+        <HLGtoPQConversion>
+            <Enabled>true</Enabled>
+            <Method>inverse_OOTF</Method>
+            <PeakLuminance>2000</PeakLuminance>
+        </HLGtoPQConversion>
+    </HLGMetadata>
+
+    <!-- Metadata Processing Pipeline -->
+    <ProcessingPipeline>
+        <!-- Input stage -->
+        <InputStage>
+            <MetadataExtraction>true</MetadataExtraction>
+            <MetadataValidation>true</MetadataValidation>
+            <FallbackHandling>true</FallbackHandling>
+        </InputStage>
+
+        <!-- Analysis stage -->
+        <AnalysisStage>
+            <HistogramAnalysis>true</HistogramAnalysis>
+            <SceneDetection>true</SceneDetection>
+            <ContentClassification>true</ContentClassification>
+        </AnalysisStage>
+
+        <!-- Mapping stage -->
+        <MappingStage>
+            <ToneMapping>true</ToneMapping>
+            <GamutMapping>true</GamutMapping>
+            <ColorVolumeTransform>true</ColorVolumeTransform>
+        </MappingStage>
+
+        <!-- Output stage -->
+        <OutputStage>
+            <DisplayAdaptation>true</DisplayAdaptation>
+            <AmbientAdaptation>true</AmbientAdaptation>
+            <QualityOptimization>true</QualityOptimization>
+        </OutputStage>
+    </ProcessingPipeline>
+
+    <!-- Scene Change Detection -->
+    <SceneChangeDetection>
+        <Enabled>true</Enabled>
+        <Method>histogram_comparison</Method>
+        <Threshold>0.3</Threshold>
+        <MinSceneDuration>100</MinSceneDuration>
+        <AdaptationSpeed>0.5</AdaptationSpeed>
+        
+        <!-- Histogram comparison parameters -->
+        <HistogramComparison>
+            <Bins>64</Bins>
+            <Metric>chi_square</Metric>
+            <Threshold>0.25</Threshold>
+        </HistogramComparison>
+    </SceneChangeDetection>
+
+    <!-- Fallback Metadata -->
+    <FallbackMetadata>
+        <!-- When dynamic metadata is missing -->
+        <DefaultValues>
+            <MaxCLL>1000</MaxCLL>
+            <MaxFALL>400</MaxFALL>
+            <MinPQ>0</MinPQ>
+            <MaxPQ>3072</MaxPQ>
+            <AvgPQ>1536</AvgPQ>
+        </DefaultValues>
+
+        <!-- Content type defaults -->
+        <ContentTypeDefaults>
+            <Type name="movie">
+                <MaxCLL>2000</MaxCLL>
+                <MaxFALL>800</MaxFALL>
+            </Type>
+            <Type name="sports">
+                <MaxCLL>1500</MaxCLL>
+                <MaxFALL>600</MaxFALL>
+            </Type>
+            <Type name="game">
+                <MaxCLL>1000</MaxCLL>
+                <MaxFALL>400</MaxFALL>
+            </Type>
+            <Type name="animation">
+                <MaxCLL>3000</MaxCLL>
+                <MaxFALL>1500</MaxFALL>
+            </Type>
+        </ContentTypeDefaults>
+    </FallbackMetadata>
+
+    <!-- Performance Optimization -->
+    <PerformanceOptimization>
+        <MetadataCaching>true</MetadataCaching>
+        <PrecomputedLUT>true</PrecomputedLUT>
+        <GPUAcceleration>true</GPUAcceleration>
+        <ParallelProcessing>true</ParallelProcessing>
+        <MaxProcessingTime>8</MaxProcessingTime>
+    </PerformanceOptimization>
+</HDRMetadata>

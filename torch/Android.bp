@@ -1,0 +1,11 @@
+cc_library_static {
+    name: "libtorch-control-onyx",
+    vendor: true,
+    srcs: [
+        "torch-control.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+    ],
+    export_include_dirs: ["include"],
+}

@@ -1,6 +1,31 @@
 # Audio
 persist.vendor.audio.cloud u:object_r:vendor_audio_cloud_ctrl_mi_prop:s0
 
+# Charging
+persist.vendor.chg_typ u:object_r:vendor_charger_prop:s0
+persist.vendor.fast_charge u:object_r:vendor_charger_prop:s0
+ro.vendor.fast_charge u:object_r:vendor_charger_prop:s0
+vendor.power.chg.typ u:object_r:vendor_charger_prop:s0
+persist.vendor.turbo. u:object_r:vendor_charger_prop:s0
+vendor.charge.sports.mode u:object_r:vendor_charger_prop:s0
+
+# Dolby Vision
+ro.vendor.dolby.vision.enabled u:object_r:vendor_dolby_vision_prop:s0
+ro.vendor.dolby.vision.support u:object_r:vendor_dolby_vision_prop:s0
+persist.vendor.dolby.vision.enabled u:object_r:vendor_dolby_vision_prop:s0
+persist.vendor.dolby.vision.support u:object_r:vendor_dolby_vision_prop:s0
+vendor.display.dolby_vision.enabled u:object_r:vendor_dolby_vision_prop:s0
+ro.vendor.display.hdr.enabled u:object_r:vendor_dolby_vision_prop:s0
+ro.vendor.display.hdr.support u:object_r:vendor_dolby_vision_prop:s0
+ro.vendor.display.dolby_vision.profile u:object_r:vendor_dolby_vision_prop:s0
+persist.vendor.display.hdr.mode u:object_r:vendor_dolby_vision_prop:s0
+vendor.display.hdr. u:object_r:vendor_dolby_vision_prop:s0
+persist.vendor.dolby.vision. u:object_r:vendor_dolby_vision_prop:s0
+vendor.display.mode u:object_r:vendor_dolby_vision_prop:s0
+persist.vendor.display.profile u:object_r:vendor_dolby_vision_prop:s0
+vendor.display.hdr.mode u:object_r:vendor_dolby_vision_prop:s0
+vendor.display.pq.mode u:object_r:vendor_dolby_vision_prop:s0
+
 # Camera
 persist.vendor.EnableP3ColorSpace u:object_r:vendor_camera_p3enable_prop:s0
 persist.vendor.XDRVersion u:object_r:vendor_camera_xdrversion_prop:s0

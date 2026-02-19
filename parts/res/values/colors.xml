@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_color">#FF6B9FD4</color>
+    <color name="accent_color_dark">#FF4A7BA7</color>
+    <color name="glass_background">#CC1A1A2E</color>
+    <color name="glass_background_light">#99FFFFFF</color>
+    <color name="glass_border">#40FFFFFF</color>
+    <color name="preference_title_color">#FFFFFFFF</color>
+    <color name="preference_summary_color">#B3FFFFFF</color>
+    <color name="category_title_color">#FF6B9FD4</color>
+    <color name="switch_track_on">#FF6B9FD4</color>
+    <color name="switch_track_off">#33FFFFFF</color>
+    <color name="seekbar_progress">#FF6B9FD4</color>
+    <color name="seekbar_background">#33FFFFFF</color>
+    <color name="card_background">#E6162133</color>
+    <color name="card_background_pressed">#FF1E2D4A</color>
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#B3FFFFFF</color>
+    <color name="dolby_gold">#FFD4AF37</color>
+    <color name="dolby_atmos_purple">#FF7B68EE</color>
+    <color name="dolby_vision_gold">#FFD4AF37</color>
+    <color name="gradient_start">#FF1A1A2E</color>
+    <color name="gradient_end">#FF16213E</color>
+    <color name="ripple_color">#1AFFFFFF</color>
+</resources>

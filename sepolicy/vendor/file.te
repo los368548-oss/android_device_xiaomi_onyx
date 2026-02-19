@@ -15,6 +15,11 @@ type sysfs_csiphy_umd_paras, fs_type, sysfs_type;
 type vendor_sysfs_xm_power, fs_type, sysfs_type;
 type sysfs_fastcharge, sysfs_type, fs_type;
 
+# Dolby Vision
+type vendor_dolby_vision_data_file, file_type, data_file_type;
+type vendor_hdr_config_file, file_type, vendor_file_type;
+type vendor_sysfs_dolby_vision, fs_type, sysfs_type;
+
 # Diag
 type minidump_data_file, data_file_type, file_type;
 type vendor_bsp_data_log_file, data_file_type, file_type;
