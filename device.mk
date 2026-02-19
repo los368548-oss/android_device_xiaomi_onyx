@@ -530,3 +530,6 @@ PRODUCT_COPY_FILES += \
 
 # Vendor
 $(call inherit-product, vendor/xiaomi/onyx/onyx-vendor.mk)
+
+# Dolby
+$(call inherit-product, hardware/dolby/dolby.mk)
