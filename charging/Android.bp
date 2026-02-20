@@ -1,0 +1,19 @@
+cc_binary {
+    name: "xiaomi-charging-control",
+    vendor: true,
+    srcs: [
+        "charging-control.cpp",
+        "service.cpp",
+    ],
+    header_libs: [
+        "libbase_headers",
+    ],
+    shared_libs: [
+        "libbase",
+        "liblog",
+        "libcutils",
+    ],
+    init_rc: [
+        "xiaomi-charging-control.rc",
+    ],
+}

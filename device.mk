@@ -198,7 +198,8 @@ PRODUCT_PACKAGES += \
 
 # FastCharge
 PRODUCT_PACKAGES += \
-    FastCharge
+    FastCharge \
+    xiaomi-charging-control
 
 # Fingerprint
 $(call soong_config_set,XIAOMI_BIOMETRICS_FINGERPRINT,USE_NEW_IMPL,true)

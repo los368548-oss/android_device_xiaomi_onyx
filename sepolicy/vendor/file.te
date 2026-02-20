@@ -14,6 +14,8 @@ type sysfs_csiphy_umd_paras, fs_type, sysfs_type;
 # Charger
 type vendor_sysfs_xm_power, fs_type, sysfs_type;
 type sysfs_fastcharge, sysfs_type, fs_type;
+type vendor_sysfs_mca, fs_type, sysfs_type;
+type vendor_xm_power_sysfs, fs_type, sysfs_type;
 
 # Dolby Vision
 type vendor_dolby_vision_data_file, file_type, data_file_type;

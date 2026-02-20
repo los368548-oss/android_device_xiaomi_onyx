@@ -256,6 +256,15 @@ ro.vendor.fast_charge=true
 persist.vendor.fast_charge=true
 persist.vendor.chg_typ=90w
 vendor.power.chg.typ=90w
+ro.vendor.turbo_charge=true
+persist.vendor.turbo_charge=true
+ro.vendor.charge_pump.support=true
+ro.vendor.mca_charge.support=true
+vendor.charger.max_current=9000000
+vendor.charger.max_voltage=11000000
+persist.vendor.charger.smart_charge=true
+ro.vendor.quick_charge.support=true
+persist.vendor.quick_charge.support=true
 
 # WiFi
 wifi.aware.interface=wifi-aware0

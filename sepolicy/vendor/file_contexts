@@ -51,7 +51,15 @@
 
 # Charge
 /(vendor|system/vendor)/bin/hw/vendor.xiaomi.hardware.micharge-service u:object_r:hal_micharge_default_exec:s0
+/(vendor|system/vendor)/bin/xiaomi-charging-control u:object_r:xiaomi_charging_control_exec:s0
 /dev/smart_charge_cdev u:object_r:vendor_sysfs_xm_power:s0
+/sys/devices/platform/soc/soc:mca_strategy_quick_charge(/.*)? u:object_r:vendor_sysfs_mca:s0
+/sys/devices/platform/soc/soc:mca_strategy_pd_auth(/.*)? u:object_r:vendor_sysfs_mca:s0
+/sys/devices/platform/soc/soc:mca_charge_interface(/.*)? u:object_r:vendor_sysfs_mca:s0
+/sys/devices/platform/soc/soc:mca_business_charger(/.*)? u:object_r:vendor_sysfs_mca:s0
+/sys/devices/virtual/xm_power(/.*)? u:object_r:vendor_xm_power_sysfs:s0
+/sys/class/qcom-battery/sport_mode u:object_r:vendor_xm_power_sysfs:s0
+/sys/class/qcom-battery/scenario_fcc u:object_r:vendor_xm_power_sysfs:s0
 
 # CitSensor
 /(odm|vendor/odm|vendor|system/vendor)/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl u:object_r:vendor_hal_citsensorservice_xiaomi_default_exec:s0

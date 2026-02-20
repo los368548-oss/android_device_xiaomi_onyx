@@ -1,0 +1,26 @@
+type xiaomi_charging_control, domain;
+type xiaomi_charging_control_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(xiaomi_charging_control)
+
+allow xiaomi_charging_control self:capability { dac_override dac_read_search };
+
+allow xiaomi_charging_control sysfs:dir r_dir_perms;
+allow xiaomi_charging_control sysfs:file rw_file_perms;
+allow xiaomi_charging_control sysfs_battery_supply:dir r_dir_perms;
+allow xiaomi_charging_control sysfs_battery_supply:file rw_file_perms;
+allow xiaomi_charging_control vendor_sysfs_battery_supply:dir r_dir_perms;
+allow xiaomi_charging_control vendor_sysfs_battery_supply:file rw_file_perms;
+allow xiaomi_charging_control sysfs_thermal:dir r_dir_perms;
+allow xiaomi_charging_control sysfs_thermal:file r_file_perms;
+
+allow xiaomi_charging_control vendor_xm_power_sysfs:dir r_dir_perms;
+allow xiaomi_charging_control vendor_xm_power_sysfs:file rw_file_perms;
+
+allow xiaomi_charging_control vendor_sysfs_mca:dir r_dir_perms;
+allow xiaomi_charging_control vendor_sysfs_mca:file rw_file_perms;
+
+allow xiaomi_charging_control sysfs_power:dir r_dir_perms;
+allow xiaomi_charging_control sysfs_power:file rw_file_perms;
+
+r_dir_file(xiaomi_charging_control, sysfs)

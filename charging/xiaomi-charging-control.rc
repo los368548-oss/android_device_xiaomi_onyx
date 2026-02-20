@@ -1,0 +1,12 @@
+service xiaomi-charging-control /vendor/bin/xiaomi-charging-control
+    class vendor
+    user system
+    group system
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+    start xiaomi-charging-control
+
+on charger
+    start xiaomi-charging-control
