@@ -525,12 +525,6 @@ on boot
     chmod 664 /sys/devices/platform/soc/1d84000.ufshc/ufscld/trigger
     #END Memory_CLD
 
-on property:vendor.display.lcd_density=560
-   setprop dalvik.vm.heapgrowthlimit 256m
-
-on property:vendor.display.lcd_density=640
-   setprop dalvik.vm.heapgrowthlimit 512m
-
     # Allow system to manipulate Fast Charge node
     chown system system /sys/class/qcom-battery/sport_mode
     chmod 0660 /sys/class/qcom-battery/sport_mode
@@ -568,6 +562,12 @@ on property:vendor.display.lcd_density=640
     # Enable quick charge and PD auth strategies for 90W charging
     write /sys/devices/platform/soc/soc:mca_strategy_quick_charge/enable 1
     write /sys/devices/platform/soc/soc:mca_strategy_pd_auth/enable 1
+
+on property:vendor.display.lcd_density=560
+   setprop dalvik.vm.heapgrowthlimit 256m
+
+on property:vendor.display.lcd_density=640
+   setprop dalvik.vm.heapgrowthlimit 512m
 
 on init && property:ro.boot.mode=charger
     wait_for_prop vendor.all.modules.ready 1
