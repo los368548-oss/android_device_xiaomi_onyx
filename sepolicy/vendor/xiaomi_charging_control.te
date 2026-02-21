@@ -3,8 +3,6 @@ type xiaomi_charging_control_exec, exec_type, vendor_file_type, file_type;
 
 init_daemon_domain(xiaomi_charging_control)
 
-allow xiaomi_charging_control self:capability { dac_override dac_read_search };
-
 allow xiaomi_charging_control sysfs:dir r_dir_perms;
 allow xiaomi_charging_control sysfs:file rw_file_perms;
 allow xiaomi_charging_control sysfs_battery_supply:dir r_dir_perms;
