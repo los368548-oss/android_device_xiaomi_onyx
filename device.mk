@@ -532,5 +532,8 @@ PRODUCT_COPY_FILES += \
 # Vendor
 $(call inherit-product, vendor/xiaomi/onyx/onyx-vendor.mk)
 
-# Dolby
+# Dolby Atmos
+PRODUCT_PACKAGES += \
+    XiaomiDolby
+
 $(call inherit-product, hardware/dolby/dolby.mk)

@@ -30,6 +30,11 @@ attribute hal_micharge;
 attribute hal_micharge_server;
 attribute hal_micharge_client;
 
+# Dolby Atmos
+attribute hal_aidl_dms;
+attribute hal_aidl_dms_client;
+attribute hal_aidl_dms_server;
+
 # Touchfeature
 attribute hal_touchfeature_xiaomi;
 attribute hal_touchfeature_xiaomi_client;
