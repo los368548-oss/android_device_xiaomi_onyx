@@ -164,7 +164,7 @@ PRODUCT_PACKAGES += \
     android.hardware.boot-service.qti.recovery
 
 # Basic Call Recorder
-$(call inherit-product, vendor/bcr/bcr.mk)
+$(call inherit-product, vendor/extras/bcr/bcr.mk)
 
 # Camera
 PRODUCT_COPY_FILES += \
